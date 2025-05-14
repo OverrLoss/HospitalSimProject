@@ -1,0 +1,18 @@
+Ortopeda: kości, stawy, więzadła; złamanie, skręcenie, artretyzm  
+Kardiolog: serce, naczynia krwionośne; nadciśnienie, zawał serca, arytmia, miażdżyca  
+Dermatolog: skóra, włosy, paznokcie; łuszczyca, egzema, trądzik, grzybica  
+Lekarz ogólny: całe ciało; grypa, przeziębienie, infekcje bakteryjne i wirusowe  
+Pulmonolog: płuca, drogi oddechowe; astma, zapalenie płuc, przewlekła obturacyjna choroba płuc  
+Neurolog: mózg, układ nerwowy; padaczka, migrena, stwardnienie rozsiane  
+Gastrolog: żołądek, jelita; wrzody żołądka, zapalenie żołądka, choroba refluksowa  
+Internista: narządy wewnętrzne; cukrzyca, nadciśnienie, anemia  
+Reumatolog: stawy, układ mięśniowo-szkieletowy; reumatoidalne zapalenie stawów, dna moczanowa, toczeń  
+Urolog: nerki, pęcherz moczowy, prostata; kamica nerkowa, zakażenie dróg moczowych  
+Endokrynolog: gruczoły, hormony; niedoczynność tarczycy, cukrzyca, choroba Addisona  
+Okulista: oczy; zaćma, jaskra, zapalenie spojówek  
+Alergolog: układ oddechowy, skóra; astma alergiczna, katar sienny, atopowe zapalenie skóry  
+Chirurg: różne części ciała w zależności od zabiegu; operacje, urazy, nowotwory  
+Diabetolog: trzustka, metabolizm; cukrzyca typu 1, cukrzyca typu 2, hipoglikemia  
+Onkolog: różne narządy; nowotwory złośliwe i łagodne, chemioterapia  
+Psychiatra: mózg, układ nerwowy; depresja, schizofrenia, zaburzenia lękowe 
+Lekarz ogólny: gorączka, przeziębienie, kaszel, ból głowy, bóle brzucha, osłabienie, zmęczenie

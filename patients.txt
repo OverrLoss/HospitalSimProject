@@ -1,0 +1,64 @@
+Jan Kowalski 35 Mazowieckie złamanie  
+Tomasz Nowak 40 Mazowieckie skręcenie  
+Aleksandra Wiśniewska 29 Mazowieckie ból głowy  
+Michał Zieliński 45 Mazowieckie migrena  
+Anna Baran 32 Mazowieckie nadciśnienie  
+Krzysztof Gajda 50 Mazowieckie zawał serca  
+Emilia Nowak 28 Mazowieckie arytmia  
+Wojciech Lis 60 Mazowieckie miażdżyca  
+Natalia Kalinowska 38 Mazowieckie łuszczyca  
+Tomasz Maj 42 Mazowieckie egzema  
+Anna Zielińska 28 Dolnośląskie zapalenie spojówek  
+Ewa Wiśniewska 50 Dolnośląskie przeziębienie  
+Piotr Kowalczyk 33 Dolnośląskie grypa  
+Maria Zawadzka 45 Dolnośląskie infekcja bakteryjna  
+Tomasz Baran 40 Dolnośląskie astma  
+Barbara Nowak 55 Dolnośląskie zapalenie płuc  
+Damian Kowal 47 Dolnośląskie przewlekła obturacyjna choroba płuc  
+Krystyna Malinowska 35 Dolnośląskie zapalenie żołądka  
+Karolina Czarnecka 29 Dolnośląskie wrzody żołądka  
+Rafał Tomaszewski 48 Dolnośląskie choroba refluksowa  
+Karol Malinowski 36 Kujawsko-pomorskie astma  
+Ewa Jankowska 52 Kujawsko-pomorskie migrena  
+Piotr Grabowski 41 Kujawsko-pomorskie wrzody żołądka  
+Agnieszka Szymańska 30 Kujawsko-pomorskie infekcja bakteryjna  
+Michał Lewandowski 46 Kujawsko-pomorskie przewlekła obturacyjna choroba płuc  
+Joanna Nowicka 60 Kujawsko-pomorskie anemia  
+Paweł Kamiński 39 Kujawsko-pomorskie kamica nerkowa  
+Katarzyna Król 28 Kujawsko-pomorskie zakażenie dróg moczowych  
+Andrzej Duda 50 Kujawsko-pomorskie niedoczynność tarczycy  
+Iwona Lis 37 Kujawsko-pomorskie zapalenie spojówek  
+Krzysztof Lewandowski 42 Lubelskie cukrzyca  
+Joanna Bąk 51 Lubelskie reumatoidalne zapalenie stawów  
+Paweł Kamiński 38 Lubelskie dna moczanowa  
+Katarzyna Król 27 Lubelskie toczeń  
+Andrzej Nowak 45 Lubelskie hipoglikemia  
+Iwona Stępień 32 Lubelskie zaćma  
+Bartosz Kaczmarek 48 Lubelskie jaskra  
+Julia Zawadzka 39 Lubelskie atopowe zapalenie skóry  
+Michał Kaczmarek 44 Lubelskie depresja  
+Zofia Gajda 53 Lubelskie schizofrenia  
+Sebastian Lisowski 31 Lubelskie padaczka  
+Barbara Kowalska 47 Lubelskie zaburzenia lękowe  
+Roman Wiśniewski 58 Lubelskie zapalenie stawów  
+Karolina Malec 34 Lubelskie dna moczanowa  
+Marcin Zawisza 42 Lubelskie toczeń  
+Anna Zielińska 49 Lubelskie cukrzyca typu 1  
+Krzysztof Tomaszewski 62 Lubelskie nadciśnienie  
+Marek Nowicki 55 Lubelskie anemia  
+Elżbieta Krawczyk 30 Lubelskie hipoglikemia  
+Michał Bartek 48 Lubelskie miażdżyca  
+Sylwia Zawadzka 54 Lubelskie astma  
+Tomasz Grabowski 40 Dolnośląskie zapalenie gardła  
+Joanna Kowal 38 Dolnośląskie zapalenie oskrzeli  
+Rafał Zieliński 41 Kujawsko-pomorskie grzybica  
+Marta Wiśniewska 29 Kujawsko-pomorskie trądzik  
+Łukasz Baran 45 Mazowieckie nowotwór  
+Agnieszka Lis 50 Mazowieckie chemioterapia  
+Wojciech Gajda 44 Mazowieckie operacja  
+Emilia Malinowska 36 Mazowieckie uraz  
+Katarzyna Lisowska 33 Mazowieckie depresja  
+Dariusz Kalinowski 57 Mazowieckie schizofrenia  
+Monika Tomaszewska 48 Mazowieckie zaburzenia lękowe  
+Arkadiusz Bartek 39 Dolnośląskie refluks  
+Kinga Kowalska 28 Dolnośląskie wrzody żołądka  
