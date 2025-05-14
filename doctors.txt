@@ -1,95 +1,159 @@
-Dolnośląskie - Wojewódzki Szpital Specjalistyczny we Wrocławiu:
-    Jan Kowalski - Ortopeda
-    Anna Nowak - Kardiolog
-    Tomasz Wiśniewski - Dermatolog
-    Maria Zielińska - Lekarz ogólny
+[Region]
+Dolnoslaskie
+[Hospital]
+Wojewodzki Szpital Specjalistyczny we Wroclawiu
+[Doctors]
+Jan Kowalski - Ortopeda
+Anna Nowak - Kardiolog
+Tomasz Wisniewski - Dermatolog
+Maria Zielinska - Lekarz ogolny
 
-Kujawsko-pomorskie - Wojewódzki Szpital Obserwacyjno-Zakaźny w Bydgoszczy:
-    Karol Malinowski - Pulmonolog
-    Ewa Jankowska - Neurolog
-    Piotr Grabowski - Gastrolog
-    Agnieszka Szymańska - Lekarz ogólny
+[Region]
+Kujawsko-pomorskie
+[Hospital]
+Wojewodzki Szpital Obserwacyjno-Zakazny w Bydgoszczy
+[Doctors]
+Karol Malinowski - Pulmonolog
+Ewa Jankowska - Neurolog
+Piotr Grabowski - Gastrolog
+Agnieszka Szymanska - Lekarz ogolny
 
-Lubelskie - Wojewódzki Szpital Specjalistyczny w Lublinie:
-    Krzysztof Lewandowski - Internista
-    Joanna Bąk - Reumatolog
-    Paweł Kamiński - Urolog
-    Katarzyna Król - Lekarz ogólny
+[Region]
+Lubelskie
+[Hospital]
+Wojewodzki Szpital Specjalistyczny w Lublinie
+[Doctors]
+Krzysztof Lewandowski - Internista
+Joanna Bak - Reumatolog
+Pawel Kaminski - Urolog
+Katarzyna Krol - Lekarz ogolny
 
-Lubuskie - Wielospecjalistyczny Szpital Wojewódzki w Gorzowie Wielkopolskim:
-    Andrzej Duda - Endokrynolog
-    Iwona Lis - Okulista
-    Bartosz Stępień - Alergolog
-    Julia Zawadzka - Lekarz ogólny
+[Region]
+Lubuskie
+[Hospital]
+Wielospecjalistyczny Szpital Wojewodzki w Gorzowie Wielkopolskim
+[Doctors]
+Andrzej Duda - Endokrynolog
+Iwona Lis - Okulista
+Bartosz Stepien - Alergolog
+Julia Zawadzka - Lekarz ogolny
 
-Łódzkie - Wojewódzki Specjalistyczny Szpital im. M. Pirogowa w Łodzi:
-    Michał Kaczmarek - Chirurg
-    Zofia Gajda - Diabetolog
-    Rafał Mazur - Onkolog
-    Alicja Domańska - Lekarz ogólny
+[Region]
+Lodzkie
+[Hospital]
+Wojewodzki Specjalistyczny Szpital im. M. Pirogowa w Lodzi
+[Doctors]
+Michal Kaczmarek - Chirurg
+Zofia Gajda - Diabetolog
+Rafal Mazur - Onkolog
+Alicja Domanska - Lekarz ogolny
 
-Małopolskie - Wojewódzki Szpital Specjalistyczny im. L. Rydygiera w Krakowie:
-    Łukasz Urban - Ortopeda
-    Barbara Nowicka - Kardiolog
-    Marcin Lis - Psychiatria
-    Monika Brzezińska - Lekarz ogólny
+[Region]
+Malopolskie
+[Hospital]
+Wojewodzki Szpital Specjalistyczny im. L. Rydygiera w Krakowie
+[Doctors]
+Lukasz Urban - Ortopeda
+Barbara Nowicka - Kardiolog
+Marcin Lis - Psychiatria
+Monika Brzezinska - Lekarz ogolny
 
-Mazowieckie - Mazowiecki Szpital Bródnowski w Warszawie:
-    Tomasz Baran - Neurolog
-    Emilia Maj - Dermatolog
-    Wojciech Witkowski - Endokrynolog
-    Natalia Rutkowska - Lekarz ogólny
+[Region]
+Mazowieckie
+[Hospital]
+Mazowiecki Szpital Brodnowski w Warszawie
+[Doctors]
+Tomasz Baran - Neurolog
+Emilia Maj - Dermatolog
+Wojciech Witkowski - Endokrynolog
+Natalia Rutkowska - Lekarz ogolny
 
-Opolskie - Uniwersytecki Szpital Kliniczny w Opolu:
-    Andrzej Kalinowski - Gastrolog
-    Magdalena Czajka - Okulista
-    Bartłomiej Piątek - Internista
-    Weronika Michalska - Lekarz ogólny
+[Region]
+Opolskie
+[Hospital]
+Uniwersytecki Szpital Kliniczny w Opolu
+[Doctors]
+Andrzej Kalinowski - Gastrolog
+Magdalena Czajka - Okulista
+Bartlomiej Piatek - Internista
+Weronika Michalska - Lekarz ogolny
 
-Podkarpackie - Wojewódzki Szpital Kliniczny nr 2 w Rzeszowie:
-    Piotr Olejnik - Reumatolog
-    Agata Bielska - Alergolog
-    Damian Król - Ortopeda
-    Ewelina Stolarz - Lekarz ogólny
+[Region]
+Podkarpackie
+[Hospital]
+Wojewodzki Szpital Kliniczny nr 2 w Rzeszowie
+[Doctors]
+Piotr Olejnik - Reumatolog
+Agata Bielska - Alergolog
+Damian Krol - Ortopeda
+Ewelina Stolarz - Lekarz ogolny
 
-Podlaskie - Uniwersytecki Szpital Kliniczny w Białymstoku:
-    Michał Kruczek - Kardiolog
-    Julia Bartek - Chirurg
-    Sebastian Góra - Pulmonolog
-    Olga Drzewiecka - Lekarz ogólny
+[Region]
+Podlaskie
+[Hospital]
+Uniwersytecki Szpital Kliniczny w Bialymstoku
+[Doctors]
+Michal Kruczek - Kardiolog
+Julia Bartek - Chirurg
+Sebastian Gora - Pulmonolog
+Olga Drzewiecka - Lekarz ogolny
 
-Pomorskie - Pomorskie Centrum Traumatologii w Gdańsku:
-    Kamil Raczyński - Dermatolog
-    Elżbieta Sowa - Neurolog
-    Roman Bryś - Internista
-    Marta Nowak - Lekarz ogólny
+[Region]
+Pomorskie
+[Hospital]
+Pomorskie Centrum Traumatologii w Gdansku
+[Doctors]
+Kamil Raczynski - Dermatolog
+Elzbieta Sowa - Neurolog
+Roman Brys - Internista
+Marta Nowak - Lekarz ogolny
 
-Śląskie - Górnośląskie Centrum Medyczne w Katowicach:
-    Adrian Czarnecki - Ortopeda
-    Kinga Malec - Diabetolog
-    Daniel Jasiński - Kardiolog
-    Renata Walczak - Lekarz ogólny
+[Region]
+Slaskie
+[Hospital]
+Gornoslaskie Centrum Medyczne w Katowicach
+[Doctors]
+Adrian Czarnecki - Ortopeda
+Kinga Malec - Diabetolog
+Daniel Jasinski - Kardiolog
+Renata Walczak - Lekarz ogolny
 
-Świętokrzyskie - Wojewódzki Szpital Zespolony w Kielcach:
-    Patryk Góral - Urolog
-    Klaudia Wilk - Endokrynolog
-    Artur Maj - Gastrolog
-    Sylwia Pawlak - Lekarz ogólny
+[Region]
+Swietokrzyskie
+[Hospital]
+Wojewodzki Szpital Zespolony w Kielcach
+[Doctors]
+Patryk Goral - Urolog
+Klaudia Wilk - Endokrynolog
+Artur Maj - Gastrolog
+Sylwia Pawlak - Lekarz ogolny
 
-Warmińsko-mazurskie - Wojewódzki Szpital Specjalistyczny w Olsztynie:
-    Natalia Krawczyk - Dermatolog
-    Dariusz Zięba - Pulmonolog
-    Anna Musiał - Onkolog
-    Tomasz Jaworski - Lekarz ogólny
+[Region]
+Warminsko-mazurskie
+[Hospital]
+Wojewodzki Szpital Specjalistyczny w Olsztynie
+[Doctors]
+Natalia Krawczyk - Dermatolog
+Dariusz Zieba - Pulmonolog
+Anna Musial - Onkolog
+Tomasz Jaworski - Lekarz ogolny
 
-Wielkopolskie - Szpital Miejski im. J. Strusia w Poznaniu:
-    Beata Adamska - Internista
-    Paweł Kozioł - Neurolog
-    Lidia Roman - Reumatolog
-    Michał Turek - Lekarz ogólny
+[Region]
+Wielkopolskie
+[Hospital]
+Szpital Miejski im. J. Strusia w Poznaniu
+[Doctors]
+Beata Adamska - Internista
+Pawel Koziol - Neurolog
+Lidia Roman - Reumatolog
+Michal Turek - Lekarz ogolny
 
-Zachodniopomorskie - Szpital Kliniczny Nr 2 w Szczecinie:
-    Krystyna Sikora - Kardiolog
-    Mateusz Żak - Okulista
-    Eliza Grochowska - Diabetolog
-    Izabela Kot - Lekarz ogólny
+[Region]
+Zachodniopomorskie
+[Hospital]
+Szpital Kliniczny Nr 2 w Szczecinie
+[Doctors]
+Krystyna Sikora - Kardiolog
+Mateusz Zak - Okulista
+Eliza Grochowska - Diabetolog
+Izabela Kot - Lekarz ogolny

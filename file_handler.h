@@ -2,11 +2,15 @@
 #define FILE_HANDLER_H
 
 #include "hospital.h"
+#include "patient.h"
 #include <fstream>
 #include <sstream>
-#include <iostream>
 #include <unordered_map>
+#include <string>
+#include <vector>
+#include <iostream>
 
+// Klasa do pracy z plikami
 class FileHandler {
 public:
     // Wczytywanie lekarzy z pliku
@@ -18,30 +22,40 @@ public:
         }
 
         std::string line;
+        std::string currentRegion;
         Hospital* currentHospital = nullptr;
+
         while (std::getline(file, line)) {
-            // Jeśli linia zawiera nazwę szpitala
-            if (line.find(" - ") != std::string::npos) {
-                std::istringstream iss(line);
-                std::string region, hospitalName;
-                std::getline(iss, region, '-');
-                std::getline(iss, hospitalName);
+            line = trim(line);
 
-                // Usunięcie zbędnych spacji
-                region = trim(region);
-                hospitalName = trim(hospitalName);
+            if (line == "[Region]") {
+                if (std::getline(file, line)) {
+                    currentRegion = trim(line);
+                }
+            } else if (line == "[Hospital]") {
+                if (std::getline(file, line)) {
+                    std::string hospitalName = trim(line);
+                    currentHospital = new Hospital(hospitalName, currentRegion);
+                    hospitals.push_back(currentHospital);
+                }
+            } else if (line == "[Doctors]") {
+                while (std::getline(file, line) && !line.empty() && line[0] != '[') {
+                    std::size_t dashPos = line.find(" - ");
+                    if (dashPos != std::string::npos) {
+                        std::string fullName = line.substr(0, dashPos);
+                        std::string specialization = line.substr(dashPos + 3);
+                        fullName = trim(fullName);
+                        specialization = trim(specialization);
 
-                currentHospital = new Hospital(hospitalName, region);
-                hospitals.push_back(currentHospital);
-            } else if (currentHospital != nullptr && !line.empty()) {
-                // Jeśli linia zawiera lekarza
-                std::istringstream iss(line);
-                std::string firstName, lastName, specialization;
-                iss >> firstName >> lastName;
-                std::getline(iss, specialization, '-');
-                specialization = trim(specialization);
+                        std::istringstream nameStream(fullName);
+                        std::string firstName, lastName;
+                        nameStream >> firstName >> lastName;
 
-                currentHospital->addDoctor(firstName, lastName, specialization);
+                        if (currentHospital != nullptr) {
+                            currentHospital->addDoctor(new Doctor(firstName, lastName, specialization));
+                        }
+                    }
+                }
             }
         }
 
@@ -58,16 +72,10 @@ public:
 
         std::string line;
         while (std::getline(file, line)) {
-            // Jeśli linia zawiera specjalistę i jego symptomy
-            if (line.find(":") != std::string::npos) {
-                std::istringstream iss(line);
-                std::string specialist, symptoms;
-                std::getline(iss, specialist, ':');
-                std::getline(iss, symptoms);
-
-                specialist = trim(specialist);
-                std::vector<std::string> symptomList = split(symptoms, ',');
-                symptomsMap[specialist] = symptomList;
+            std::istringstream stream(line);
+            std::string symptom, disease;
+            if (std::getline(stream, symptom, ':') && std::getline(stream, disease)) {
+                symptomsMap[symptom].push_back(disease);
             }
         }
 
@@ -84,16 +92,14 @@ public:
 
         std::string line;
         while (std::getline(file, line)) {
-            std::istringstream iss(line);
+            std::istringstream stream(line);
             std::string firstName, lastName, region, problem;
             int age;
 
-            if (iss >> firstName >> lastName >> age >> region) {
-                std::getline(iss, problem);
-                problem = trim(problem);
-
-                Patient* newPatient = new Patient(firstName, lastName, age, region, problem);
-                patients.push_back(newPatient);
+            if (stream >> firstName >> lastName >> age >> region) {
+                std::getline(stream, problem); // Pobranie pozostałego tekstu jako problem
+                Patient* patient = new Patient(firstName, lastName, age, region, problem);
+                patients.push_back(patient);
             }
         }
 
@@ -101,22 +107,11 @@ public:
     }
 
 private:
-    // Funkcja pomocnicza do usuwania zbędnych spacji
+    // Funkcja pomocnicza do obcinania białych znaków
     static std::string trim(const std::string& str) {
         size_t first = str.find_first_not_of(' ');
         size_t last = str.find_last_not_of(' ');
-        return str.substr(first, (last - first + 1));
-    }
-
-    // Funkcja pomocnicza do dzielenia stringa
-    static std::vector<std::string> split(const std::string& str, char delimiter) {
-        std::vector<std::string> tokens;
-        std::istringstream iss(str);
-        std::string token;
-        while (std::getline(iss, token, delimiter)) {
-            tokens.push_back(trim(token));
-        }
-        return tokens;
+        return (first == std::string::npos || last == std::string::npos) ? "" : str.substr(first, last - first + 1);
     }
 };
 

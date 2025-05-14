@@ -2,9 +2,8 @@
 #define PATIENT_H
 
 #include <string>
-#include <iostream>
+#include <iostream> // Dodano nagłówek umożliwiający korzystanie z cout i endl
 
-// Class representing a patient
 class Patient {
 private:
     std::string firstName;
@@ -14,25 +13,36 @@ private:
     std::string problem;
 
 public:
-    Patient() : firstName(""), lastName(""), age(0), region(""), problem("") {}
-    Patient(const std::string& first, const std::string& last, int patientAge, const std::string& reg, const std::string& prob)
-        : firstName(first), lastName(last), age(patientAge), region(reg), problem(prob) {}
+    // Konstruktor
+    Patient(const std::string& firstName, const std::string& lastName, int age, const std::string& region, const std::string& problem)
+        : firstName(firstName), lastName(lastName), age(age), region(region), problem(problem) {}
 
-    // Copy constructor
-    Patient(const Patient& other)
-        : firstName(other.firstName), lastName(other.lastName),
-          age(other.age), region(other.region), problem(other.problem) {}
+    // Getter dla imienia
+    const std::string& getFirstName() const {
+        return firstName;
+    }
 
-    // Destructor
-    ~Patient() {}
+    // Getter dla nazwiska
+    const std::string& getLastName() const {
+        return lastName;
+    }
 
-    // Accessor functions
-    std::string getFullName() const { return firstName + " " + lastName; }
-    int getAge() const { return age; }
-    std::string getRegion() const { return region; }
-    std::string getProblem() const { return problem; }
+    // Getter dla wieku
+    int getAge() const {
+        return age;
+    }
 
-    // Print patient details
+    // Getter dla regionu
+    const std::string& getRegion() const {
+        return region;
+    }
+
+    // Getter dla problemu
+    const std::string& getProblem() const {
+        return problem;
+    }
+
+    // Funkcja wyświetlająca szczegóły pacjenta
     void printDetails() const {
         std::cout << "Patient: " << firstName << " " << lastName
                   << ", Age: " << age

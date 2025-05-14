@@ -1,58 +1,51 @@
 #ifndef DOCTOR_H
 #define DOCTOR_H
 
+#include "patient.h"
 #include <string>
+#include <vector>
 #include <iostream>
 
-// Abstract class representing a generic medical professional
-class MedicalProfessional {
-protected:
+// Klasa reprezentująca lekarza
+class Doctor {
+private:
     std::string firstName;
     std::string lastName;
     std::string specialization;
+    std::vector<Patient*> patients; // Lista pacjentów przypisanych do lekarza
 
 public:
-    MedicalProfessional() : firstName(""), lastName(""), specialization("") {}
-    MedicalProfessional(const std::string& first, const std::string& last, const std::string& spec)
-        : firstName(first), lastName(last), specialization(spec) {}
-    virtual ~MedicalProfessional() {}
+    // Konstruktor
+    Doctor(const std::string& firstName, const std::string& lastName, const std::string& specialization)
+        : firstName(firstName), lastName(lastName), specialization(specialization) {}
 
-    // Virtual function to print details
-    virtual void printDetails() const = 0;
-};
+    // Pobranie imienia lekarza
+    const std::string& getFirstName() const {
+        return firstName;
+    }
 
-// Class representing a doctor
-class Doctor : public MedicalProfessional {
-private:
-    std::string hospitalName;
-    std::string region;
+    // Pobranie nazwiska lekarza
+    const std::string& getLastName() const {
+        return lastName;
+    }
 
-public:
-    Doctor() : hospitalName(""), region("") {}
-    Doctor(const std::string& first, const std::string& last, const std::string& spec, const std::string& hospital, const std::string& reg)
-        : MedicalProfessional(first, last, spec), hospitalName(hospital), region(reg) {}
+    // Pobranie specjalizacji lekarza
+    const std::string& getSpecialization() const {
+        return specialization;
+    }
 
-    // Copy constructor
-    Doctor(const Doctor& other)
-        : MedicalProfessional(other.firstName, other.lastName, other.specialization),
-          hospitalName(other.hospitalName), region(other.region) {}
+    // Dodanie pacjenta do listy pacjentów lekarza
+    void addPatient(Patient* patient) {
+        patients.push_back(patient);
+    }
 
-    // Destructor
-    ~Doctor() {}
-
-    // Accessor functions
-    std::string getHospitalName() const { return hospitalName; }
-    std::string getRegion() const { return region; }
-
-    // Getter for specialization
-    std::string getSpecialization() const { return specialization; }
-
-    // Override printDetails
-    void printDetails() const override {
-        std::cout << "Doctor: " << firstName << " " << lastName
-                  << ", Specialization: " << specialization
-                  << ", Hospital: " << hospitalName
-                  << ", Region: " << region << std::endl;
+    // Wyświetlenie wszystkich pacjentów lekarza
+    void printPatients() const {
+        std::cout << "Patients of Dr. " << firstName << " " << lastName << " (" << specialization << "):\n";
+        for (const Patient* patient : patients) {
+            std::cout << " - " << patient->getFirstName() << " " << patient->getLastName() << ", Age: " << patient->getAge()
+                      << ", Problem: " << patient->getProblem() << "\n";
+        }
     }
 };
 

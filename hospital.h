@@ -3,86 +3,63 @@
 
 #include "doctor.h"
 #include "patient.h"
-#include <vector>
 #include <string>
+#include <vector>
 #include <iostream>
 
+// Klasa reprezentująca szpital
 class Hospital {
 private:
-    std::string name;                // Nazwa szpitala
-    std::string region;              // Województwo
-    std::vector<Doctor*> doctors;    // Lista lekarzy
-    std::vector<Patient*> patients;  // Lista pacjentów
+    std::string name;
+    std::string region;
+    std::vector<Doctor*> doctors;
+    std::vector<Patient*> assignedPatients;
 
 public:
-    // Konstruktor domyślny
-    Hospital() : name(""), region("") {}
+    // Konstruktor
+    Hospital(const std::string& name, const std::string& region)
+        : name(name), region(region) {}
 
-    // Konstruktor z parametrami
-    Hospital(const std::string& hospitalName, const std::string& hospitalRegion)
-        : name(hospitalName), region(hospitalRegion) {}
-
-    // Destruktor - zwalnia pamięć dynamicznie alokowaną
-    ~Hospital() {
-        for (Doctor* doctor : doctors) {
-            delete doctor;
-        }
-        for (Patient* patient : patients) {
-            delete patient;
-        }
+    // Dodawanie lekarza
+    void addDoctor(Doctor* doctor) {
+        doctors.push_back(doctor);
     }
 
-    // Dodawanie lekarzy
-    void addDoctor(const std::string& firstName, const std::string& lastName, const std::string& specialization) {
-        Doctor* newDoctor = new Doctor(firstName, lastName, specialization, name, region);
-        doctors.push_back(newDoctor);
+    // Zwracanie listy lekarzy
+    const std::vector<Doctor*>& getDoctors() const {
+        return doctors;
     }
 
-    // Dodawanie pacjentów
-    void addPatient(const std::string& firstName, const std::string& lastName, int age, const std::string& problem) {
-        Patient* newPatient = new Patient(firstName, lastName, age, region, problem);
-        patients.push_back(newPatient);
-    }
-
-    // Wyświetlanie wszystkich lekarzy
-    void printDoctors() const {
-        std::cout << "Doctors in " << name << " (" << region << "):" << std::endl;
-        for (const Doctor* doctor : doctors) {
-            doctor->printDetails();
-        }
-    }
-
-    // Wyświetlanie wszystkich pacjentów
-    void printPatients() const {
-        std::cout << "Patients in " << name << " (" << region << "):" << std::endl;
-        for (const Patient* patient : patients) {
-            patient->printDetails();
-        }
-    }
-
-    // Pobieranie regionu
-    std::string getRegion() const {
-        return region;
-    }
-
-    // Funkcja przypisująca pacjenta do odpowiedniego lekarza w szpitalu
+    // Przypisywanie pacjentów do lekarzy
     void assignPatientsToDoctors() {
-        for (Patient* patient : patients) {
-            bool assigned = false;
-            for (Doctor* doctor : doctors) {
-                if (doctor->getSpecialization() == patient->getProblem()) {
-                    std::cout << "Assigning " << patient->getFullName() << " to Dr. "
-                              << doctor->getSpecialization() << std::endl;
-                    assigned = true;
-                    break;
-                }
-            }
-            if (!assigned) {
-                std::cout << "Assigning " << patient->getFullName()
-                          << " to a general practitioner." << std::endl;
-            }
+        if (doctors.empty()) {
+            std::cerr << "No doctors available to assign patients.\n";
+            return;
+        }
+
+        size_t doctorIndex = 0;
+        for (Patient* patient : assignedPatients) {
+            doctors[doctorIndex]->addPatient(patient);
+            doctorIndex = (doctorIndex + 1) % doctors.size(); // Round-robin assignment
+        }
+
+        std::cout << "Patients assigned to doctors successfully.\n";
+    }
+
+    // Wyświetlanie lekarzy
+    void printDoctors() const {
+        std::cout << "Doctors in " << name << " (" << region << "):\n";
+        for (const Doctor* doctor : doctors) {
+            std::cout << "Doctor: " << doctor->getFirstName() << " " << doctor->getLastName()
+                      << ", Specialization: " << doctor->getSpecialization() << "\n";
         }
     }
+
+    // Zwracanie nazwy szpitala
+    const std::string& getName() const { return name; }
+
+    // Zwracanie regionu
+    const std::string& getRegion() const { return region; }
 };
 
 #endif // HOSPITAL_H

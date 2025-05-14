@@ -62,7 +62,18 @@ int main() {
         case 4: {
             // Wyświetlanie szpitali i lekarzy
             for (const Hospital* hospital : hospitals) {
-                hospital->printDoctors();
+                // Wyświetlenie nazwy i regionu tylko raz
+                std::cout << "Doctors in " << hospital->getName() 
+                          << " (" << hospital->getRegion() << "):" << std::endl;
+
+                // Wyświetlenie lekarzy
+                for (const Doctor* doctor : hospital->getDoctors()) {
+                    std::cout << "Doctor: " << doctor->getFirstName() << " " 
+                              << doctor->getLastName() << ", Specialization: " 
+                              << doctor->getSpecialization() << std::endl;
+                }
+
+                std::cout << std::endl; // Dodatkowa linia odstępu między szpitalami
             }
             break;
         }
