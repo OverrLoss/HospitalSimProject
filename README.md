@@ -10,17 +10,17 @@ Dolnośląskie - Wojewódzki Szpital Specjalistyczny we Wrocławiu
 	Tomasz Wiśniewski - Dermatolog
 	Maria Zielińska - Lekarz ogólny
 
-W pliku symptoms.txt mamy dane jakie problemy rozwiązują specjaliści w postaci:
-Specjalista: problem pacjenta
+W pliku symptoms.txt mamy dane jakiej części ciała dotyczy problem i jaki specjalista się tym zajmuje w postaci:
+Specjalista: część ciała
 przykład:
-Ortopeda: ból kolana, bol kolana, kolano boli, kolanko, bol nogi, bóle stawu, bol stawu, ból stawu, uraz kolana, zlamanie, złamanie, skręcenie, skrecenie, obolale kolano
+Ortopeda: kolana, nogi, stawy,  staw, kolano,
 
 W pliku patients.txt znajdują się dane pacjenta:
-Imię Nazwisko Wiek Województwo Problem jaki ma
+Imię Nazwisko Wiek Województwo Części ciała z problemem
 Przykład:
-Jan Kowalski 35 Podkarpacie ból kolana
+Jan Kowalski 35 Podkarpacie kolana
 
-Do pliku patients.txt możemy dodawać pacjentów poprzez menu programu
+Do pliku patients.txt możemy dodawać pacjentów poprzez menu programu, wpisując imię nazwisko wiek wybierając z listy województwo i wpisując część ciała 
 
 Potem przypisujemy pacjentów do lekarzy na podstawie problemy jaki mu doskwiera i województwa w jakim się znajduje.
 Jeśli nie ma specjalisty który zajmuje się danym problemem to jest wysyłany do lekarza ogólnego, jeśli dany specjalista jest w innym województwie niż pacjent pytamy czy chce zapisać się u tego specjalisty czy u lekarza ogólnego w swoim województwie.
