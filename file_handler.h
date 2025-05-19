@@ -50,7 +50,12 @@ public:
                         nameStream >> firstName >> lastName;
 
                         if (currentHospital != nullptr) {
-                            currentHospital->addDoctor(new Doctor(firstName, lastName, specialization));
+                            // Możliwość wykrycia chirurga po specjalizacji
+                            if (specialization == "surgeon") {
+                                currentHospital->addDoctor(new Surgeon(firstName, lastName, specialization, "general"));
+                            } else {
+                                currentHospital->addDoctor(new Doctor(firstName, lastName, specialization));
+                            }
                         }
                     }
                 }
@@ -91,7 +96,7 @@ public:
             int age;
 
             if (stream >> firstName >> lastName >> age >> region) {
-                std::getline(stream, problem); // Pobranie pozostałego tekstu jako problem
+                std::getline(stream, problem);
                 Patient* patient = new Patient(firstName, lastName, age, region, problem);
                 patients.push_back(patient);
             }

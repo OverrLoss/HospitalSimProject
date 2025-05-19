@@ -1,0 +1,72 @@
+Brak pacjentów w szpitalu: Wojewodzki Szpital Specjalistyczny we Wroclawiu
+Szpital: Wojewodzki Szpital Obserwacyjno-Zakazny w Bydgoszczy (Kujawsko-pomorskie)
+Queue for Dr. Karol Malinowski (Pulmonolog):
+ 1. Michał Lewandowski, Age: 46, Problem:  przewlekła obturacyjna choroba płuc  , Visit: 2025-05-20 08:00
+Queue for Dr. Agnieszka Szymanska (Lekarz ogolny):
+ 1. Karol Malinowski, Age: 36, Problem:  astma  , Visit: 2025-05-20 08:00
+ 2. Ewa Jankowska, Age: 52, Problem:  migrena  , Visit: 2025-05-20 08:30
+ 3. Piotr Grabowski, Age: 41, Problem:  wrzody żołądka  , Visit: 2025-05-20 09:00
+ 4. Agnieszka Szymańska, Age: 30, Problem:  infekcja bakteryjna  , Visit: 2025-05-20 09:30
+ 5. Joanna Nowicka, Age: 60, Problem:  anemia  , Visit: 2025-05-20 10:00
+ 6. Paweł Kamiński, Age: 39, Problem:  kamica nerkowa  , Visit: 2025-05-20 10:30
+ 7. Katarzyna Król, Age: 28, Problem:  zakażenie dróg moczowych  , Visit: 2025-05-20 11:00
+ 8. Andrzej Duda, Age: 50, Problem:  niedoczynność tarczycy  , Visit: 2025-05-20 11:30
+ 9. Iwona Lis, Age: 37, Problem:  zapalenie spojówek  , Visit: 2025-05-20 12:00
+ 10. Rafał Zieliński, Age: 41, Problem:  grzybica  , Visit: 2025-05-20 12:30
+ 11. Marta Wiśniewska, Age: 29, Problem:  trądzik  , Visit: 2025-05-20 13:00
+Szpital: Wojewodzki Szpital Specjalistyczny w Lublinie (Lubelskie)
+Queue for Dr. Krzysztof Lewandowski (Internista):
+ 1. Marek Nowicki, Age: 55, Problem:  anemia  , Visit: 2025-05-20 08:00
+Queue for Dr. Joanna Bak (Reumatolog):
+ 1. Katarzyna Król, Age: 27, Problem:  toczeń  , Visit: 2025-05-20 08:00
+ 2. Marcin Zawisza, Age: 42, Problem:  toczeń  , Visit: 2025-05-20 08:30
+Queue for Dr. Katarzyna Krol (Lekarz ogolny):
+ 1. Krzysztof Lewandowski, Age: 42, Problem:  cukrzyca  , Visit: 2025-05-20 08:00
+ 2. Joanna Bąk, Age: 51, Problem:  reumatoidalne zapalenie stawów  , Visit: 2025-05-20 08:30
+ 3. Paweł Kamiński, Age: 38, Problem:  dna moczanowa  , Visit: 2025-05-20 09:00
+ 4. Andrzej Nowak, Age: 45, Problem:  hipoglikemia  , Visit: 2025-05-20 09:30
+ 5. Iwona Stępień, Age: 32, Problem:  zaćma  , Visit: 2025-05-20 10:00
+ 6. Bartosz Kaczmarek, Age: 48, Problem:  jaskra  , Visit: 2025-05-20 10:30
+ 7. Julia Zawadzka, Age: 39, Problem:  atopowe zapalenie skóry  , Visit: 2025-05-20 11:00
+ 8. Michał Kaczmarek, Age: 44, Problem:  depresja  , Visit: 2025-05-20 11:30
+ 9. Zofia Gajda, Age: 53, Problem:  schizofrenia  , Visit: 2025-05-20 12:00
+ 10. Sebastian Lisowski, Age: 31, Problem:  padaczka  , Visit: 2025-05-20 12:30
+ 11. Barbara Kowalska, Age: 47, Problem:  zaburzenia lękowe  , Visit: 2025-05-20 13:00
+ 12. Roman Wiśniewski, Age: 58, Problem:  zapalenie stawów  , Visit: 2025-05-20 13:30
+ 13. Karolina Malec, Age: 34, Problem:  dna moczanowa  , Visit: 2025-05-20 14:00
+ 14. Anna Zielińska, Age: 49, Problem:  cukrzyca typu 1  , Visit: 2025-05-20 14:30
+ 15. Krzysztof Tomaszewski, Age: 62, Problem:  nadciśnienie  , Visit: 2025-05-20 15:00
+ 16. Elżbieta Krawczyk, Age: 30, Problem:  hipoglikemia  , Visit: 2025-05-20 15:30
+ 17. Michał Bartek, Age: 48, Problem:  miażdżyca  , Visit: 2025-05-21 08:00
+ 18. Sylwia Zawadzka, Age: 54, Problem:  astma  , Visit: 2025-05-21 08:30
+Brak pacjentów w szpitalu: Wielospecjalistyczny Szpital Wojewodzki w Gorzowie Wielkopolskim
+Brak pacjentów w szpitalu: Wojewodzki Specjalistyczny Szpital im. M. Pirogowa w Lodzi
+Brak pacjentów w szpitalu: Wojewodzki Szpital Specjalistyczny im. L. Rydygiera w Krakowie
+Szpital: Mazowiecki Szpital Brodnowski w Warszawie (Mazowieckie)
+Queue for Dr. Natalia Rutkowska (Lekarz ogolny):
+ 1. Jan Kowalski, Age: 35, Problem:  złamanie  , Visit: 2025-05-20 08:00
+ 2. Tomasz Nowak, Age: 40, Problem:  skręcenie  , Visit: 2025-05-20 08:30
+ 3. Aleksandra Wiśniewska, Age: 29, Problem:  ból głowy  , Visit: 2025-05-20 09:00
+ 4. Michał Zieliński, Age: 45, Problem:  migrena  , Visit: 2025-05-20 09:30
+ 5. Anna Baran, Age: 32, Problem:  nadciśnienie  , Visit: 2025-05-20 10:00
+ 6. Krzysztof Gajda, Age: 50, Problem:  zawał serca  , Visit: 2025-05-20 10:30
+ 7. Emilia Nowak, Age: 28, Problem:  arytmia  , Visit: 2025-05-20 11:00
+ 8. Wojciech Lis, Age: 60, Problem:  miażdżyca  , Visit: 2025-05-20 11:30
+ 9. Natalia Kalinowska, Age: 38, Problem:  łuszczyca  , Visit: 2025-05-20 12:00
+ 10. Tomasz Maj, Age: 42, Problem:  egzema  , Visit: 2025-05-20 12:30
+ 11. Łukasz Baran, Age: 45, Problem:  nowotwór  , Visit: 2025-05-20 13:00
+ 12. Agnieszka Lis, Age: 50, Problem:  chemioterapia  , Visit: 2025-05-20 13:30
+ 13. Wojciech Gajda, Age: 44, Problem:  operacja  , Visit: 2025-05-20 14:00
+ 14. Emilia Malinowska, Age: 36, Problem:  uraz  , Visit: 2025-05-20 14:30
+ 15. Katarzyna Lisowska, Age: 33, Problem:  depresja  , Visit: 2025-05-20 15:00
+ 16. Dariusz Kalinowski, Age: 57, Problem:  schizofrenia  , Visit: 2025-05-20 15:30
+ 17. Monika Tomaszewska, Age: 48, Problem:  zaburzenia lękowe  , Visit: 2025-05-21 08:00
+Brak pacjentów w szpitalu: Uniwersytecki Szpital Kliniczny w Opolu
+Brak pacjentów w szpitalu: Wojewodzki Szpital Kliniczny nr 2 w Rzeszowie
+Brak pacjentów w szpitalu: Uniwersytecki Szpital Kliniczny w Bialymstoku
+Brak pacjentów w szpitalu: Pomorskie Centrum Traumatologii w Gdansku
+Brak pacjentów w szpitalu: Gornoslaskie Centrum Medyczne w Katowicach
+Brak pacjentów w szpitalu: Wojewodzki Szpital Zespolony w Kielcach
+Brak pacjentów w szpitalu: Wojewodzki Szpital Specjalistyczny w Olsztynie
+Brak pacjentów w szpitalu: Szpital Miejski im. J. Strusia w Poznaniu
+Brak pacjentów w szpitalu: Szpital Kliniczny Nr 2 w Szczecinie
