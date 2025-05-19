@@ -13,7 +13,7 @@ extern "C" {
     DLL_EXPORT void init_data(size_t n);
     DLL_EXPORT void set_num_threads(int num_threads);
     DLL_EXPORT void set_cpu_usage_percent(int percent);
-    DLL_EXPORT double run_computation(); // Zwraca czas w sekundach
+    DLL_EXPORT double run_computation();
 }
 
 #endif // PARALLEL_CALCULATOR_H

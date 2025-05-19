@@ -1,0 +1,27 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        {
+            "label": "build all (CL)",
+            "type": "shell",
+            "command": "cl.exe",
+            "args": [
+                "/std:c++17",
+                "/EHsc",
+                "/openmp",
+                "/Zi",
+                "main.cpp",
+                "parallel_calculator.cpp",
+                "/Fe:HospitalSimProject.exe"
+            ],
+            "group": {
+                "kind": "build",
+                "isDefault": true
+            },
+            "problemMatcher": [
+                "$msCompile"
+            ],
+            "detail": "Kompilacja wszystkich plików C++ z obsługą OpenMP"
+        }
+    ]
+}

@@ -23,19 +23,13 @@ public:
         : firstName(firstName), lastName(lastName), specialization(specialization) {}
 
     // Pobranie imienia lekarza
-    const std::string& getFirstName() const {
-        return firstName;
-    }
+    const std::string& getFirstName() const { return firstName; }
 
     // Pobranie nazwiska lekarza
-    const std::string& getLastName() const {
-        return lastName;
-    }
+    const std::string& getLastName() const { return lastName; }
 
     // Pobranie specjalizacji lekarza
-    const std::string& getSpecialization() const {
-        return specialization;
-    }
+    const std::string& getSpecialization() const { return specialization; }
 
     // Dodanie pacjenta do listy pacjentów lekarza
     void addPatient(Patient* patient) {

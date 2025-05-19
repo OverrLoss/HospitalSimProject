@@ -10,10 +10,8 @@
 #include <vector>
 #include <iostream>
 
-// Klasa do pracy z plikami
 class FileHandler {
 public:
-    // Wczytywanie lekarzy z pliku
     static void loadDoctors(const std::string& filePath, std::vector<Hospital*>& hospitals) {
         std::ifstream file(filePath);
         if (!file.is_open()) {
@@ -58,11 +56,9 @@ public:
                 }
             }
         }
-
         file.close();
     }
 
-    // Wczytywanie symptomów z pliku
     static void loadSymptoms(const std::string& filePath, std::unordered_map<std::string, std::vector<std::string>>& symptomsMap) {
         std::ifstream file(filePath);
         if (!file.is_open()) {
@@ -78,11 +74,9 @@ public:
                 symptomsMap[symptom].push_back(disease);
             }
         }
-
         file.close();
     }
 
-    // Wczytywanie pacjentów z pliku
     static void loadPatients(const std::string& filePath, std::vector<Patient*>& patients) {
         std::ifstream file(filePath);
         if (!file.is_open()) {
@@ -102,12 +96,10 @@ public:
                 patients.push_back(patient);
             }
         }
-
         file.close();
     }
 
 private:
-    // Funkcja pomocnicza do obcinania białych znaków
     static std::string trim(const std::string& str) {
         size_t first = str.find_first_not_of(' ');
         size_t last = str.find_last_not_of(' ');

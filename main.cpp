@@ -1,275 +1,374 @@
 #include "file_handler.h"
 #include "hospital.h"
+#include "doctor.h"
 #include "patient.h"
+#include "parallel_calculator.h"
 #include <iostream>
 #include <vector>
 #include <unordered_map>
+#include <string>
 #include <sstream>
-#include <ctime>
+#include <locale>
+#include <algorithm>
 
-// --- DODANE: obsługa biblioteki obliczeniowej ---
-#include "parallel_calculator.h"
-// ---
+enum class Language { EN, PL };
 
-// Funkcja pomocnicza do wyświetlania menu
-void displayMenu() {
-    std::cout << "\n--- Hospital Queue Management System ---\n";
-    std::cout << "1. Load doctors from file\n";
-    std::cout << "2. Load symptoms from file\n";
-    std::cout << "3. Load patients from file\n";
-    std::cout << "4. Display hospitals and doctors\n";
-    std::cout << "5. Display patients\n";
-    std::cout << "6. Assign patients to doctors\n";
-    std::cout << "7. Add a new patient\n";
-    std::cout << "8. Display matched patients for hospitals and doctors\n";
-    std::cout << "9. Add patient to a doctor's queue\n";
-    std::cout << "10. Show doctor's queue\n";
-    std::cout << "11. Show doctor's schedule for a day\n";
-    std::cout << "12. Wykonaj obliczenia naukowe (OpenMP)\n"; // Nowa opcja!
-    std::cout << "13. Exit\n";
-    std::cout << "Select an option: ";
-}
-
-// Pomocnicza funkcja do pobierania wskaźnika do szpitala po nazwie
-Hospital* findHospitalByName(const std::vector<Hospital*>& hospitals, const std::string& hospitalName) {
-    for (Hospital* h : hospitals) {
-        if (h->getName() == hospitalName) {
-            return h;
-        }
+void displayMenu(Language lang) {
+    if (lang == Language::EN) {
+        std::cout <<
+            "\n--- Hospital Management Menu ---\n"
+            "1. Load doctors from file\n"
+            "2. Add hospital\n"
+            "3. Add doctor\n"
+            "4. Load patients from file\n"
+            "5. Add patient to list\n"
+            "6. Load symptoms from file\n"
+            "7. Add symptom\n"
+            "8. Show hospitals and assigned doctors (sorted)\n"
+            "9. Show patients\n"
+            "10. Show symptoms\n"
+            "11. Assign patients to doctors\n"
+            "12. Show patients assigned to doctors (sorted)\n"
+            "13. Create queues\n"
+            "14. Show queue for all doctors (sorted)\n"
+            "15. Show queue for selected doctor\n"
+            "16. Run scientific computation\n"
+            "17. Exit program\n"
+            "Select option: ";
+    } else {
+        std::cout <<
+            "\n--- Menu zarzadzania szpitalem ---\n"
+            "1. Wczytaj lekarzy z pliku\n"
+            "2. Dodaj szpital\n"
+            "3. Dodaj lekarza\n"
+            "4. Wczytaj pacjentow z pliku\n"
+            "5. Dodaj pacjenta do listy\n"
+            "6. Wczytaj objawy z pliku\n"
+            "7. Dodaj objaw\n"
+            "8. Wyswietl szpitale i przypisanych lekarzy (posortowane)\n"
+            "9. Wyswietl pacjentow\n"
+            "10. Wyswietl objawy\n"
+            "11. Przypisz pacjentow do lekarzy\n"
+            "12. Wyswietl pacjentow przypisanych do lekarzy (posortowane)\n"
+            "13. Utworz kolejki\n"
+            "14. Wyswietl kolejki wszystkich lekarzy (posortowane)\n"
+            "15. Wyswietl kolejke lekarza\n"
+            "16. Wykonaj obliczenie naukowe\n"
+            "17. Zakoncz program\n"
+            "Wybierz opcje: ";
     }
-    return nullptr;
-}
-
-// Pomocnicza funkcja do pobierania wskaźnika do lekarza po nazwisku w szpitalu
-Doctor* findDoctorByLastName(const std::vector<Doctor*>& doctors, const std::string& lastName) {
-    for (Doctor* d : doctors) {
-        if (d->getLastName() == lastName) {
-            return d;
-        }
-    }
-    return nullptr;
 }
 
 int main() {
-    std::vector<Hospital*> hospitals; // Lista szpitali
-    std::vector<Patient*> patients;   // Lista pacjentów
-    std::unordered_map<std::string, std::vector<std::string>> symptomsMap; // Mapa symptomów
+    std::locale::global(std::locale(""));
+    std::vector<Hospital*> hospitals;
+    std::vector<Patient*> patients;
+    std::unordered_map<std::string, std::vector<std::string>> symptomsMap;
 
-    int choice;
+    Language lang = Language::EN;
+    std::cout << "Select language / Wybierz jezyk:\n1. English\n2. Polski\nChoice: ";
+    int langChoice;
+    std::cin >> langChoice;
+    std::cin.ignore();
+    if (langChoice == 2) lang = Language::PL;
 
+    int choice = 0;
     do {
-        displayMenu();
+        displayMenu(lang);
         std::cin >> choice;
         std::cin.ignore();
 
-        switch (choice) {
-        case 1: {
-            std::string filePath;
-            std::cout << "Enter the path to doctors.txt: ";
-            std::cin >> filePath;
-            FileHandler::loadDoctors(filePath, hospitals);
-            std::cout << "Doctors loaded successfully.\n";
-            break;
-        }
-        case 2: {
-            std::string filePath;
-            std::cout << "Enter the path to symptoms.txt: ";
-            std::cin >> filePath;
-            FileHandler::loadSymptoms(filePath, symptomsMap);
-            std::cout << "Symptoms loaded successfully.\n";
-            break;
-        }
-        case 3: {
-            std::string filePath;
-            std::cout << "Enter the path to patients.txt: ";
-            std::cin >> filePath;
-            FileHandler::loadPatients(filePath, patients);
-            std::cout << "Patients loaded successfully.\n";
-            break;
-        }
-        case 4: {
-            for (const Hospital* hospital : hospitals) {
-                std::cout << "Doctors in " << hospital->getName()
-                          << " (" << hospital->getRegion() << "):" << std::endl;
-                for (const Doctor* doctor : hospital->getDoctors()) {
-                    std::cout << "Doctor: " << doctor->getFirstName() << " "
-                              << doctor->getLastName() << ", Specialization: "
-                              << doctor->getSpecialization() << std::endl;
+        switch(choice) {
+            case 1: {
+                std::string filePath;
+                if (lang == Language::EN) {
+                    std::cout << "Load doctors from:\n";
+                    std::cout << "1. Default file (doctors.txt)\n";
+                    std::cout << "2. Custom file\n";
+                    std::cout << "Select option: ";
+                } else {
+                    std::cout << "Wczytaj lekarzy z:\n";
+                    std::cout << "1. Domyslny plik (doctors.txt)\n";
+                    std::cout << "2. Wlasny plik\n";
+                    std::cout << "Wybierz opcje: ";
                 }
-                std::cout << std::endl;
-            }
-            break;
-        }
-        case 5: {
-            for (const Patient* patient : patients) {
-                patient->printDetails();
-            }
-            break;
-        }
-        case 6: {
-            for (Hospital* hospital : hospitals) {
-                hospital->assignPatientsToDoctors();
-            }
-            break;
-        }
-        case 7: {
-            std::string firstName, lastName, region, problem;
-            int age;
-            std::cout << "Enter patient's first name: ";
-            std::cin >> firstName;
-            std::cout << "Enter patient's last name: ";
-            std::cin >> lastName;
-            std::cout << "Enter patient's age: ";
-            std::cin >> age;
-            std::cout << "Enter patient's region: ";
-            std::cin >> region;
-            std::cin.ignore();
-            std::cout << "Enter patient's problem: ";
-            std::getline(std::cin, problem);
-
-            Patient* newPatient = new Patient(firstName, lastName, age, region, problem);
-            patients.push_back(newPatient);
-            std::cout << "Patient added successfully.\n";
-            break;
-        }
-        case 8: {
-            for (const Hospital* hospital : hospitals) {
-                std::cout << "Hospital: " << hospital->getName() << " (" << hospital->getRegion() << ")\n";
-                const auto& doctors = hospital->getDoctors();
-                if (doctors.empty()) {
-                    std::cout << "  No doctors in this hospital.\n";
-                    continue;
+                int fileChoice;
+                std::cin >> fileChoice;
+                std::cin.ignore();
+                if (fileChoice == 1) {
+                    filePath = "doctors.txt";
+                } else {
+                    if (lang == Language::EN)
+                        std::cout << "Enter path to doctors file: ";
+                    else
+                        std::cout << "Podaj sciezke do pliku z lekarzami: ";
+                    std::getline(std::cin, filePath);
                 }
-                for (const Doctor* doctor : doctors) {
-                    doctor->printPatients();
+                FileHandler::loadDoctors(filePath, hospitals);
+                break;
+            }
+            case 2: {
+                std::string region, name;
+                if (lang == Language::EN) {
+                    std::cout << "Region: "; std::cin >> region;
+                    std::cout << "Hospital name: "; std::cin.ignore(); std::getline(std::cin, name);
+                } else {
+                    std::cout << "Wojewodztwo: "; std::cin >> region;
+                    std::cout << "Nazwa szpitala: "; std::cin.ignore(); std::getline(std::cin, name);
                 }
-                std::cout << std::endl;
+                hospitals.push_back(new Hospital(name, region));
+                break;
             }
-            break;
-        }
-        case 9: {
-            std::string hospitalName, doctorLastName;
-            std::cout << "Enter hospital name: ";
-            std::getline(std::cin, hospitalName);
-            std::cout << "Enter doctor's last name: ";
-            std::getline(std::cin, doctorLastName);
+            case 3: {
+                std::string region, hospitalName;
+                if (lang == Language::EN) {
+                    std::cout << "Region: "; std::cin >> region;
+                    std::cout << "Hospital name: "; std::cin.ignore(); std::getline(std::cin, hospitalName);
+                } else {
+                    std::cout << "Wojewodztwo: "; std::cin >> region;
+                    std::cout << "Nazwa szpitala: "; std::cin.ignore(); std::getline(std::cin, hospitalName);
+                }
+                Hospital* hospital = nullptr;
+                for(auto* h : hospitals)
+                    if(h->getRegion() == region && h->getName() == hospitalName) hospital = h;
+                if(!hospital) {
+                    if (lang == Language::EN)
+                        std::cout << "Hospital not found.\n";
+                    else
+                        std::cout << "Nie znaleziono szpitala.\n";
+                    break;
+                }
+                std::string firstName, lastName, specialization;
+                if (lang == Language::EN) {
+                    std::cout << "Doctor first name: "; std::cin >> firstName;
+                    std::cout << "Doctor last name: "; std::cin >> lastName;
+                    std::cout << "Specialization: "; std::cin >> specialization;
+                } else {
+                    std::cout << "Imie lekarza: "; std::cin >> firstName;
+                    std::cout << "Nazwisko lekarza: "; std::cin >> lastName;
+                    std::cout << "Specjalizacja: "; std::cin >> specialization;
+                }
+                hospital->addDoctor(new Doctor(firstName, lastName, specialization));
+                break;
+            }
+            case 4: {
+                std::string filePath;
+                if (lang == Language::EN) {
+                    std::cout << "Load patients from:\n";
+                    std::cout << "1. Default file (patients.txt)\n";
+                    std::cout << "2. Custom file\n";
+                    std::cout << "Select option: ";
+                } else {
+                    std::cout << "Wczytaj pacjentow z:\n";
+                    std::cout << "1. Domyslny plik (patients.txt)\n";
+                    std::cout << "2. Wlasny plik\n";
+                    std::cout << "Wybierz opcje: ";
+                }
+                int fileChoice;
+                std::cin >> fileChoice;
+                std::cin.ignore();
+                if (fileChoice == 1) {
+                    filePath = "patients.txt";
+                } else {
+                    if (lang == Language::EN)
+                        std::cout << "Enter path to patients file: ";
+                    else
+                        std::cout << "Podaj sciezke do pliku z pacjentami: ";
+                    std::getline(std::cin, filePath);
+                }
+                FileHandler::loadPatients(filePath, patients);
+                break;
+            }
+            case 5: {
+                std::string firstName, lastName, region, problem;
+                int age;
+                if (lang == Language::EN) {
+                    std::cout << "Patient first name: "; std::cin >> firstName;
+                    std::cout << "Patient last name: "; std::cin >> lastName;
+                    std::cout << "Age: "; std::cin >> age;
+                    std::cout << "Region: "; std::cin >> region;
+                    std::cout << "Problem: "; std::cin.ignore(); std::getline(std::cin, problem);
+                } else {
+                    std::cout << "Imie pacjenta: "; std::cin >> firstName;
+                    std::cout << "Nazwisko pacjenta: "; std::cin >> lastName;
+                    std::cout << "Wiek: "; std::cin >> age;
+                    std::cout << "Wojewodztwo: "; std::cin >> region;
+                    std::cout << "Problem: "; std::cin.ignore(); std::getline(std::cin, problem);
+                }
+                patients.push_back(new Patient(firstName, lastName, age, region, problem));
+                break;
+            }
+            case 6: {
+                std::string filePath;
+                if (lang == Language::EN) {
+                    std::cout << "Load symptoms from:\n";
+                    std::cout << "1. Default file (symptoms.txt)\n";
+                    std::cout << "2. Custom file\n";
+                    std::cout << "Select option: ";
+                } else {
+                    std::cout << "Wczytaj objawy z:\n";
+                    std::cout << "1. Domyslny plik (symptoms.txt)\n";
+                    std::cout << "2. Wlasny plik\n";
+                    std::cout << "Wybierz opcje: ";
+                }
+                int fileChoice;
+                std::cin >> fileChoice;
+                std::cin.ignore();
+                if (fileChoice == 1) {
+                    filePath = "symptoms.txt";
+                } else {
+                    if (lang == Language::EN)
+                        std::cout << "Enter path to symptoms file: ";
+                    else
+                        std::cout << "Podaj sciezke do pliku z objawami: ";
+                    std::getline(std::cin, filePath);
+                }
+                FileHandler::loadSymptoms(filePath, symptomsMap);
+                break;
+            }
+            case 7: {
+                std::string specialist, symptom;
+                if (lang == Language::EN) {
+                    std::cout << "Specialist: "; std::cin >> specialist;
+                    std::cout << "Symptom: "; std::cin >> symptom;
+                } else {
+                    std::cout << "Specjalista: "; std::cin >> specialist;
+                    std::cout << "Objaw: "; std::cin >> symptom;
+                }
+                symptomsMap[specialist].push_back(symptom);
+                break;
+            }
+            case 8: {
+                std::vector<Hospital*> sortedHospitals = hospitals;
+                std::sort(sortedHospitals.begin(), sortedHospitals.end(), [](const Hospital* a, const Hospital* b) {
+                    if (a->getRegion() == b->getRegion())
+                        return a->getName() < b->getName();
+                    return a->getRegion() < b->getRegion();
+                });
 
-            Hospital* foundHospital = findHospitalByName(hospitals, hospitalName);
-            if (!foundHospital) {
-                std::cout << "Hospital not found.\n";
+                for(const auto* h : sortedHospitals) {
+                    h->printDoctors(); // Nagłówek i lekarze, bez powtarzania osobnej linii z nazwą szpitala
+                }
                 break;
             }
-            Doctor* foundDoctor = findDoctorByLastName(foundHospital->getDoctors(), doctorLastName);
-            if (!foundDoctor) {
-                std::cout << "Doctor not found.\n";
+            case 9: {
+                for(const auto* p : patients) p->printDetails();
                 break;
             }
-            std::cout << "Select patient:\n";
-            for (size_t i = 0; i < patients.size(); ++i) {
-                std::cout << i+1 << ". ";
-                patients[i]->printDetails();
-            }
-            int pIdx;
-            std::cin >> pIdx;
-            std::cin.ignore();
-            if (pIdx < 1 || pIdx > (int)patients.size()) {
-                std::cout << "Invalid patient index.\n";
+            case 10: {
+                for(const auto& [spec, symptoms] : symptomsMap) {
+                    std::cout << spec << ": ";
+                    for(const auto& s : symptoms) std::cout << s << ", ";
+                    std::cout << "\n";
+                }
                 break;
             }
-            foundDoctor->addToQueue(patients[pIdx-1]);
-            std::cout << "Patient added to the doctor's queue.\n";
-            break;
-        }
-        case 10: {
-            std::string hospitalName, doctorLastName;
-            std::cout << "Enter hospital name: ";
-            std::getline(std::cin, hospitalName);
-            std::cout << "Enter doctor's last name: ";
-            std::getline(std::cin, doctorLastName);
-            Hospital* foundHospital = findHospitalByName(hospitals, hospitalName);
-            if (!foundHospital) {
-                std::cout << "Hospital not found.\n";
+            case 11: {
+                for(auto* h : hospitals) {
+                    for(auto* p : patients) {
+                        if(p->getRegion() == h->getRegion()) {
+                            auto docs = h->getDoctors();
+                            if(!docs.empty()) docs[0]->addPatient(p);
+                        }
+                    }
+                }
                 break;
             }
-            Doctor* foundDoctor = findDoctorByLastName(foundHospital->getDoctors(), doctorLastName);
-            if (!foundDoctor) {
-                std::cout << "Doctor not found.\n";
-                break;
-            }
-            foundDoctor->printQueue();
-            break;
-        }
-        case 11: {
-            std::string hospitalName, doctorLastName, date;
-            std::cout << "Enter hospital name: ";
-            std::getline(std::cin, hospitalName);
-            std::cout << "Enter doctor's last name: ";
-            std::getline(std::cin, doctorLastName);
-            std::cout << "Enter date (YYYY-MM-DD): ";
-            std::getline(std::cin, date);
+            case 12: {
+                std::vector<Hospital*> sortedHospitals = hospitals;
+                std::sort(sortedHospitals.begin(), sortedHospitals.end(), [](const Hospital* a, const Hospital* b) {
+                    if (a->getRegion() == b->getRegion())
+                        return a->getName() < b->getName();
+                    return a->getRegion() < b->getRegion();
+                });
 
-            int year, month, day;
-            char dash1, dash2;
-            std::istringstream iss(date);
-            if (!(iss >> year >> dash1 >> month >> dash2 >> day) || dash1 != '-' || dash2 != '-') {
-                std::cout << "Invalid date format.\n";
+                for(const auto* h : sortedHospitals) {
+                    std::cout << (lang == Language::EN ? "Hospital: " : "Szpital: ")
+                              << h->getName() << " (" << h->getRegion() << ")\n";
+                    for(const auto* d : h->getDoctors()) d->printPatients();
+                }
                 break;
             }
-
-            std::tm tm = {};
-            tm.tm_year = year - 1900;
-            tm.tm_mon = month - 1;
-            tm.tm_mday = day;
-            tm.tm_hour = 12;
-            mktime(&tm);
-
-            if (tm.tm_wday == 0 || tm.tm_wday == 6) {
-                std::cout << "Doctors do not work on weekends.\n";
+            case 13: {
+                for(auto* h : hospitals)
+                    for(auto* d : h->getDoctors())
+                        d->printQueue();
                 break;
             }
+            case 14: {
+                std::vector<Hospital*> sortedHospitals = hospitals;
+                std::sort(sortedHospitals.begin(), sortedHospitals.end(), [](const Hospital* a, const Hospital* b) {
+                    if (a->getRegion() == b->getRegion())
+                        return a->getName() < b->getName();
+                    return a->getRegion() < b->getRegion();
+                });
 
-            Hospital* foundHospital = findHospitalByName(hospitals, hospitalName);
-            if (!foundHospital) {
-                std::cout << "Hospital not found.\n";
+                for(const auto* h : sortedHospitals) {
+                    std::cout << (lang == Language::EN ? "Hospital: " : "Szpital: ")
+                              << h->getName() << " (" << h->getRegion() << ")\n";
+                    for(const auto* d : h->getDoctors()) d->printQueue();
+                }
                 break;
             }
-            Doctor* foundDoctor = findDoctorByLastName(foundHospital->getDoctors(), doctorLastName);
-            if (!foundDoctor) {
-                std::cout << "Doctor not found.\n";
+            case 15: {
+                std::string region, hospitalName, lastName;
+                if (lang == Language::EN) {
+                    std::cout << "Region: "; std::cin >> region;
+                    std::cout << "Hospital: "; std::cin.ignore(); std::getline(std::cin, hospitalName);
+                    std::cout << "Doctor last name: "; std::getline(std::cin, lastName);
+                } else {
+                    std::cout << "Wojewodztwo: "; std::cin >> region;
+                    std::cout << "Szpital: "; std::cin.ignore(); std::getline(std::cin, hospitalName);
+                    std::cout << "Nazwisko lekarza: "; std::getline(std::cin, lastName);
+                }
+                for(const auto* h : hospitals) {
+                    if(h->getRegion() == region && h->getName() == hospitalName) {
+                        for(const auto* d : h->getDoctors()) {
+                            if(d->getLastName() == lastName) d->printQueue();
+                        }
+                    }
+                }
                 break;
             }
-            foundDoctor->printSchedule(date);
-            break;
+            case 16: {
+                size_t n;
+                int percent;
+                if (lang == Language::EN) {
+                    std::cout << "How many random data values to generate? ";
+                    std::cin >> n;
+                    std::cout << "What percent of CPU to use (1-100)? ";
+                    std::cin >> percent;
+                } else {
+                    std::cout << "Ile losowych wartosci danych wygenerowac? ";
+                    std::cin >> n;
+                    std::cout << "Jaki procent CPU uzyc (1-100)? ";
+                    std::cin >> percent;
+                }
+                init_data(n);
+                set_cpu_usage_percent(percent);
+                double t = run_computation();
+                if (lang == Language::EN)
+                    std::cout << "Computation took: " << t << " seconds\n";
+                else
+                    std::cout << "Obliczenia trwaly: " << t << " sekund\n";
+                break;
+            }
+            case 17: {
+                if (lang == Language::EN)
+                    std::cout << "Program ended!\n";
+                else
+                    std::cout << "Program zakonczony!\n";
+                break;
+            }
+            default:
+                if (lang == Language::EN)
+                    std::cout << "Invalid option!\n";
+                else
+                    std::cout << "Nieprawidlowa opcja!\n";
         }
-        case 12: {
-            // --- NOWA OPCJA: obliczenia naukowe OpenMP ---
-            size_t n;
-            int percent;
-            std::cout << "Ile danych losowych wygenerować? ";
-            std::cin >> n;
-            std::cout << "Jaki procent CPU wykorzystać (1-100)? ";
-            std::cin >> percent;
-            init_data(n);
-            set_cpu_usage_percent(percent);
-            double czas = run_computation();
-            std::cout << "Obliczenia trwały: " << czas << " sekundy\n";
-            break;
-        }
-        case 13: {
-            std::cout << "Exiting program. Goodbye!\n";
-            break;
-        }
-        default:
-            std::cout << "Invalid option. Please try again.\n";
-        }
-    } while (choice != 13);
+    } while(choice != 17);
 
-    for (Hospital* hospital : hospitals) {
-        delete hospital;
-    }
-    for (Patient* patient : patients) {
-        delete patient;
-    }
-
+    for(auto* h : hospitals) delete h;
+    for(auto* p : patients) delete p;
     return 0;
 }

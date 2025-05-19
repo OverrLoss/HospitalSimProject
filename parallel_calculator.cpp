@@ -48,7 +48,6 @@ extern "C" DLL_EXPORT double run_computation() {
 
     #pragma omp parallel for num_threads(num_threads) reduction(+:total) schedule(dynamic)
     for (ptrdiff_t i = 0; i < static_cast<ptrdiff_t>(n); ++i) {
-        // Przykładowy algorytm: funkcja o złożoności nieliniowej
         double x = data[i];
         double res = 1.0;
         for (int k = 1; k <= 100; ++k) {

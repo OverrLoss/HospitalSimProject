@@ -2,7 +2,7 @@
 #define PATIENT_H
 
 #include <string>
-#include <iostream> // Dodano nagłówek umożliwiający korzystanie z cout i endl
+#include <iostream>
 
 class Patient {
 private:
@@ -13,36 +13,15 @@ private:
     std::string problem;
 
 public:
-    // Konstruktor
     Patient(const std::string& firstName, const std::string& lastName, int age, const std::string& region, const std::string& problem)
         : firstName(firstName), lastName(lastName), age(age), region(region), problem(problem) {}
 
-    // Getter dla imienia
-    const std::string& getFirstName() const {
-        return firstName;
-    }
+    const std::string& getFirstName() const { return firstName; }
+    const std::string& getLastName() const { return lastName; }
+    int getAge() const { return age; }
+    const std::string& getRegion() const { return region; }
+    const std::string& getProblem() const { return problem; }
 
-    // Getter dla nazwiska
-    const std::string& getLastName() const {
-        return lastName;
-    }
-
-    // Getter dla wieku
-    int getAge() const {
-        return age;
-    }
-
-    // Getter dla regionu
-    const std::string& getRegion() const {
-        return region;
-    }
-
-    // Getter dla problemu
-    const std::string& getProblem() const {
-        return problem;
-    }
-
-    // Funkcja wyświetlająca szczegóły pacjenta
     void printDetails() const {
         std::cout << "Patient: " << firstName << " " << lastName
                   << ", Age: " << age
