@@ -11,6 +11,7 @@ private:
     int age;
     std::string region;
     std::string problem;
+    std::string visitDateTime; // Data i godzina wizyty
 
 public:
     Patient(const std::string& firstName, const std::string& lastName, int age, const std::string& region, const std::string& problem)
@@ -22,11 +23,16 @@ public:
     const std::string& getRegion() const { return region; }
     const std::string& getProblem() const { return problem; }
 
+    void setVisitDateTime(const std::string& dt) { visitDateTime = dt; }
+    const std::string& getVisitDateTime() const { return visitDateTime; }
+
     void printDetails() const {
         std::cout << "Patient: " << firstName << " " << lastName
                   << ", Age: " << age
                   << ", Region: " << region
-                  << ", Problem: " << problem << std::endl;
+                  << ", Problem: " << problem
+                  << (visitDateTime.empty() ? "" : (", Visit: " + visitDateTime))
+                  << std::endl;
     }
 };
 
