@@ -5,8 +5,9 @@
 #include <string>
 #include <iostream>
 
+// Bazowa klasa Pacjent
 class Patient : public Person {
-private:
+protected:
     int age;
     std::string region;
     std::string problem;
@@ -20,6 +21,8 @@ public:
         : Person(other), age(other.age), region(other.region), problem(other.problem), visitDateTime(other.visitDateTime) {}
     ~Patient() override {}
 
+    virtual std::string getType() const { return "Pacjent"; }
+
     int getAge() const { return age; }
     const std::string& getRegion() const { return region; }
     const std::string& getProblem() const { return problem; }
@@ -27,12 +30,44 @@ public:
     void setVisitDateTime(const std::string& dt) { visitDateTime = dt; }
     const std::string& getVisitDateTime() const { return visitDateTime; }
 
-    void printDetails() const override {
-        std::cout << "Patient: " << firstName << " " << lastName
-                  << ", Age: " << age
-                  << ", Region: " << region
+    virtual void printDetails() const override {
+        std::cout << getType() << ": " << firstName << " " << lastName
+                  << ", Wiek: " << age
+                  << ", Województwo: " << region
                   << ", Problem: " << problem
-                  << (visitDateTime.empty() ? "" : (", Visit: " + visitDateTime))
+                  << (visitDateTime.empty() ? "" : (", Wizyta: " + visitDateTime))
+                  << std::endl;
+    }
+};
+
+// Klasa Dziecko
+class Child : public Patient {
+public:
+    Child(const std::string& firstName, const std::string& lastName, int age, const std::string& region, const std::string& problem)
+        : Patient(firstName, lastName, age, region, problem) {}
+    std::string getType() const override { return "Dziecko"; }
+    void printDetails() const override {
+        std::cout << getType() << ": " << firstName << " " << lastName
+                  << ", Wiek: " << age
+                  << ", Województwo: " << region
+                  << ", Problem: " << problem
+                  << (visitDateTime.empty() ? "" : (", Wizyta: " + visitDateTime))
+                  << std::endl;
+    }
+};
+
+// Klasa Dorosły
+class Adult : public Patient {
+public:
+    Adult(const std::string& firstName, const std::string& lastName, int age, const std::string& region, const std::string& problem)
+        : Patient(firstName, lastName, age, region, problem) {}
+    std::string getType() const override { return "Dorosły"; }
+    void printDetails() const override {
+        std::cout << getType() << ": " << firstName << " " << lastName
+                  << ", Wiek: " << age
+                  << ", Województwo: " << region
+                  << ", Problem: " << problem
+                  << (visitDateTime.empty() ? "" : (", Wizyta: " + visitDateTime))
                   << std::endl;
     }
 };

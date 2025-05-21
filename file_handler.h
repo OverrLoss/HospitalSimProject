@@ -15,7 +15,7 @@ public:
     static void loadDoctors(const std::string& filePath, std::vector<Hospital*>& hospitals) {
         std::ifstream file(filePath);
         if (!file.is_open()) {
-            std::cerr << "Error: Could not open file " << filePath << std::endl;
+            std::cerr << "Błąd: Nie można otworzyć pliku " << filePath << std::endl;
             return;
         }
 
@@ -51,8 +51,8 @@ public:
 
                         if (currentHospital != nullptr) {
                             // Możliwość wykrycia chirurga po specjalizacji
-                            if (specialization == "surgeon") {
-                                currentHospital->addDoctor(new Surgeon(firstName, lastName, specialization, "general"));
+                            if (specialization == "chirurg") {
+                                currentHospital->addDoctor(new Surgeon(firstName, lastName, specialization, "ogólna"));
                             } else {
                                 currentHospital->addDoctor(new Doctor(firstName, lastName, specialization));
                             }
@@ -67,7 +67,7 @@ public:
     static void loadSymptoms(const std::string& filePath, std::unordered_map<std::string, std::vector<std::string>>& symptomsMap) {
         std::ifstream file(filePath);
         if (!file.is_open()) {
-            std::cerr << "Error: Could not open file " << filePath << std::endl;
+            std::cerr << "Błąd: Nie można otworzyć pliku " << filePath << std::endl;
             return;
         }
 
@@ -85,7 +85,7 @@ public:
     static void loadPatients(const std::string& filePath, std::vector<Patient*>& patients) {
         std::ifstream file(filePath);
         if (!file.is_open()) {
-            std::cerr << "Error: Could not open file " << filePath << std::endl;
+            std::cerr << "Błąd: Nie można otworzyć pliku " << filePath << std::endl;
             return;
         }
 
@@ -97,7 +97,13 @@ public:
 
             if (stream >> firstName >> lastName >> age >> region) {
                 std::getline(stream, problem);
-                Patient* patient = new Patient(firstName, lastName, age, region, problem);
+                // Tworzenie odpowiedniego typu pacjenta:
+                Patient* patient = nullptr;
+                if (age < 18) {
+                    patient = new Child(firstName, lastName, age, region, problem);
+                } else {
+                    patient = new Adult(firstName, lastName, age, region, problem);
+                }
                 patients.push_back(patient);
             }
         }
