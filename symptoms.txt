@@ -1,18 +1,21 @@
-Ortopeda: kości, stawy, więzadła; złamanie, skręcenie, artretyzm  
-Kardiolog: serce, naczynia krwionośne; nadciśnienie, zawał serca, arytmia, miażdżyca  
-Dermatolog: skóra, włosy, paznokcie; łuszczyca, egzema, trądzik, grzybica  
-Lekarz ogólny: całe ciało; grypa, przeziębienie, infekcje bakteryjne i wirusowe  
-Pulmonolog: płuca, drogi oddechowe; astma, zapalenie płuc, przewlekła obturacyjna choroba płuc  
-Neurolog: mózg, układ nerwowy; padaczka, migrena, stwardnienie rozsiane  
-Gastrolog: żołądek, jelita; wrzody żołądka, zapalenie żołądka, choroba refluksowa  
-Internista: narządy wewnętrzne; cukrzyca, nadciśnienie, anemia  
-Reumatolog: stawy, układ mięśniowo-szkieletowy; reumatoidalne zapalenie stawów, dna moczanowa, toczeń  
-Urolog: nerki, pęcherz moczowy, prostata; kamica nerkowa, zakażenie dróg moczowych  
-Endokrynolog: gruczoły, hormony; niedoczynność tarczycy, cukrzyca, choroba Addisona  
-Okulista: oczy; zaćma, jaskra, zapalenie spojówek  
-Alergolog: układ oddechowy, skóra; astma alergiczna, katar sienny, atopowe zapalenie skóry  
-Chirurg: różne części ciała w zależności od zabiegu; operacje, urazy, nowotwory  
-Diabetolog: trzustka, metabolizm; cukrzyca typu 1, cukrzyca typu 2, hipoglikemia  
-Onkolog: różne narządy; nowotwory złośliwe i łagodne, chemioterapia  
-Psychiatra: mózg, układ nerwowy; depresja, schizofrenia, zaburzenia lękowe 
-Lekarz ogólny: gorączka, przeziębienie, kaszel, ból głowy, bóle brzucha, osłabienie, zmęczenie
+Ortopeda: złamanie, skręcenie, artretyzm, osteoporoza, ból stawów, ból kolan, uraz kolana, zwichnięcie barku, szpotawość kolan, płaskostopie, skolioza, uszkodzenie chrząstki stawowej, krzywica, zapalenie kości
+Kardiolog: nadciśnienie, zawał serca, arytmia, miażdżyca, tachykardia, bradykardia, niewydolność serca, duszność, ból w klatce piersiowej, szmery serca, omdlenia, kołatanie serca, obrzęki kończyn, sinica
+Dermatolog: łuszczyca, egzema, trądzik, grzybica, atopowe zapalenie skóry, liszaj, opryszczka, łupież, brodawki, łysienie, pokrzywka, świerzb, przebarwienia skóry, rumień
+Lekarz ogolny: grypa, przeziębienie, infekcja bakteryjna, infekcja wirusowa, gorączka, kaszel, ból głowy, bóle brzucha, osłabienie, zmęczenie, ból gardła, biegunka, zaparcia, zapalenie ucha, wymioty, katar, zapalenie migdałków, wysypka, ból mięśni, ból kręgosłupa, zapalenie spojówek, brak apetytu, odwodnienie, alergia, kaszel suchy, kaszel mokry, ból zęba, nudności, zawroty głowy, zapalenie krtani, bezsenność, moczenie nocne, ból stawów, uraz głowy, niedosłuch, drgawki, świąd skóry, zaburzenia widzenia
+Pulmonolog: astma, zapalenie płuc, przewlekła obturacyjna choroba płuc, kaszel przewlekły, duszności, świszczący oddech, sarkoidoza
+Neurolog: padaczka, migrena, stwardnienie rozsiane, zawroty głowy, rwa kulszowa, drżenie, omdlenia, neuropatia
+Gastrolog: wrzody żołądka, zapalenie żołądka, choroba refluksowa, niestrawność, biegunka, zaparcia, wzdęcia, krwawienia z przewodu pokarmowego
+Internista: cukrzyca, nadciśnienie, anemia, infekcje układowe, gorączka nieznanego pochodzenia, bóle mięśni, osłabienie, utrata masy ciała
+Reumatolog: reumatoidalne zapalenie stawów, dna moczanowa, toczeń, fibromialgia, zesztywniające zapalenie stawów kręgosłupa, bóle pleców
+Urolog: kamica nerkowa, zakażenie dróg moczowych, nietrzymanie moczu, powiększona prostata, ból podczas oddawania moczu, krwiomocz
+Endokrynolog: niedoczynność tarczycy, cukrzyca, choroba Addisona, nadczynność tarczycy, otyłość, zaburzenia miesiączkowania, ginekomastia
+Okulista: zaćma, jaskra, zapalenie spojówek, krótkowzroczność, dalekowzroczność, astygmatyzm, suchość oczu, pogorszenie widzenia
+Alergolog: astma alergiczna, katar sienny, pokrzywka, alergia pokarmowa, alergia na roztocza, obrzęk naczynioruchowy
+Chirurg: operacje, urazy, nowotwory, przepuklina, zapalenie wyrostka robaczkowego, żylaki, rany cięte
+Diabetolog: cukrzyca typu 1, cukrzyca typu 2, hipoglikemia, hiperglikemia, insulinooporność, neuropatia cukrzycowa
+Onkolog: nowotwory złośliwe, nowotwory łagodne, chemioterapia, radioterapia, guz piersi, guz płuc, rak jelita grubego, białaczka
+Psychiatra: depresja, schizofrenia, zaburzenia lękowe, bezsenność, mania, fobia społeczna, uzależnienia, nerwica natręctw
+Laryngolog: zapalenie zatok, zapalenie gardła, angina, niedosłuch, szumy uszne, chrapanie, polipy nosa
+Hematolog: anemia, białaczka, małopłytkowość, neutropenia, skaza krwotoczna, powiększenie śledziony
+Ginekolog: bolesne miesiączki, nieregularne cykle, endometrioza, torbiele jajników, ciąża, niepłodność
+Pediatra: grypa, przeziębienie, infekcja bakteryjna, infekcja wirusowa, gorączka, kaszel, ból głowy, bóle brzucha, osłabienie, zmęczenie, ból gardła, biegunka, zaparcia, zapalenie ucha, wymioty, katar, zapalenie migdałków, wysypka, ból mięśni, ból kręgosłupa, zapalenie spojówek, brak apetytu, odwodnienie, alergia, kaszel suchy, kaszel mokry, ból zęba, nudności, zawroty głowy, zapalenie krtani, bezsenność, moczenie nocne, ból stawów, uraz głowy, niedosłuch, drgawki, świąd skóry, zaburzenia widzenia

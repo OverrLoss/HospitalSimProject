@@ -1,159 +1,383 @@
 [Region]
 Dolnoslaskie
 [Hospital]
-Wojewodzki Szpital Specjalistyczny we Wroclawiu
+Wojewódzki Szpital Specjalistyczny we Wrocławiu
 [Doctors]
-Jan Kowalski - Ortopeda
-Anna Nowak - Kardiolog
-Tomasz Wisniewski - Dermatolog
-Maria Zielinska - Lekarz ogolny
+Jan Kowalski - Lekarz ogolny
+Anna Nowak - Pediatra
+Piotr Zielinski - Kardiolog
+Maria Wisniewska - Dermatolog
+[Hospital]
+Uniwersytecki Szpital Kliniczny we Wrocławiu
+[Doctors]
+Adam Lewandowski - Lekarz ogolny
+Ewa Sikora - Ortopeda
+Tomasz Wojcik - Pulmonolog
+Katarzyna Krawczyk - Gastrolog
+[Hospital]
+Dolnośląskie Centrum Onkologii, Pulmonologii i Hematologii we Wrocławiu
+[Doctors]
+Pawel Mazur - Internista
+Monika Kaczmarek - Pediatra
+Marek Baran - Reumatolog
+Agnieszka Duda - Neurolog
 
 [Region]
 Kujawsko-pomorskie
 [Hospital]
-Wojewodzki Szpital Obserwacyjno-Zakazny w Bydgoszczy
+Wojewódzki Szpital Obserwacyjno-Zakaźny im. T. Borowicza w Bydgoszczy
 [Doctors]
-Karol Malinowski - Pulmonolog
-Ewa Jankowska - Neurolog
-Piotr Grabowski - Gastrolog
-Agnieszka Szymanska - Lekarz ogolny
+Karol Malinowski - Lekarz ogolny
+Ewa Jankowska - Pediatra
+Piotr Grabowski - Ortopeda
+Agnieszka Szymańska - Dermatolog
+[Hospital]
+Szpital Uniwersytecki nr 2 im. dr. J. Biziela w Bydgoszczy
+[Doctors]
+Krzysztof Lewandowski - Kardiolog
+Joanna Bąk - Pulmonolog
+Paweł Kamiński - Gastrolog
+Katarzyna Król - Internista
+[Hospital]
+Wojewódzki Szpital Specjalistyczny we Włocławku
+[Doctors]
+Andrzej Duda - Lekarz ogolny
+Iwona Lis - Reumatolog
+Bartosz Stępień - Neurolog
+Julia Zawadzka - Pediatra
 
 [Region]
 Lubelskie
 [Hospital]
-Wojewodzki Szpital Specjalistyczny w Lublinie
+Wojewódzki Szpital Specjalistyczny w Lublinie
 [Doctors]
-Krzysztof Lewandowski - Internista
-Joanna Bak - Reumatolog
-Pawel Kaminski - Urolog
-Katarzyna Krol - Lekarz ogolny
+Michał Kaczmarek - Lekarz ogolny
+Zofia Gajda - Pediatra
+Rafał Mazur - Ortopeda
+Alicja Domańska - Dermatolog
+[Hospital]
+Samodzielny Publiczny Szpital Kliniczny Nr 4 w Lublinie
+[Doctors]
+Łukasz Urban - Kardiolog
+Barbara Nowicka - Pulmonolog
+Marcin Lis - Gastrolog
+Monika Brzezińska - Internista
+[Hospital]
+Wojewódzki Szpital Specjalistyczny im. Kardynała Stefana Wyszyńskiego w Lublinie
+[Doctors]
+Tomasz Baran - Lekarz ogolny
+Emilia Maj - Reumatolog
+Wojciech Witkowski - Neurolog
+Natalia Rutkowska - Pediatra
 
 [Region]
 Lubuskie
 [Hospital]
-Wielospecjalistyczny Szpital Wojewodzki w Gorzowie Wielkopolskim
+Wielospecjalistyczny Szpital Wojewódzki w Gorzowie Wielkopolskim
 [Doctors]
-Andrzej Duda - Endokrynolog
-Iwona Lis - Okulista
-Bartosz Stepien - Alergolog
-Julia Zawadzka - Lekarz ogolny
+Andrzej Kalinowski - Lekarz ogolny
+Magdalena Czajka - Pediatra
+Bartłomiej Piątek - Ortopeda
+Weronika Michalska - Dermatolog
+[Hospital]
+Szpital Uniwersytecki im. Karola Marcinkowskiego w Zielonej Górze
+[Doctors]
+Piotr Olejnik - Kardiolog
+Agata Bielska - Pulmonolog
+Damian Król - Gastrolog
+Ewelina Stolarz - Internista
+[Hospital]
+Szpital Wojewódzki w Zielonej Górze
+[Doctors]
+Michał Kruczek - Lekarz ogolny
+Julia Bartek - Reumatolog
+Sebastian Góra - Neurolog
+Olga Drzewiecka - Pediatra
 
 [Region]
 Lodzkie
 [Hospital]
-Wojewodzki Specjalistyczny Szpital im. M. Pirogowa w Lodzi
+Wojewódzki Specjalistyczny Szpital im. M. Pirogowa w Łodzi
 [Doctors]
-Michal Kaczmarek - Chirurg
-Zofia Gajda - Diabetolog
-Rafal Mazur - Onkolog
-Alicja Domanska - Lekarz ogolny
+Marek Kowalski - Lekarz ogolny
+Zofia Sowa - Pediatra
+Rafał Mazur - Ortopeda
+Alicja Domańska - Dermatolog
+[Hospital]
+Szpital im. WAM w Łodzi
+[Doctors]
+Łukasz Nowak - Kardiolog
+Barbara Zielińska - Pulmonolog
+Marcin Urban - Gastrolog
+Monika Brzezińska - Internista
+[Hospital]
+Szpital Kliniczny nr 1 im. Norberta Barlickiego w Łodzi
+[Doctors]
+Tomasz Baran - Lekarz ogolny
+Emilia Maj - Reumatolog
+Wojciech Witkowski - Neurolog
+Natalia Rutkowska - Pediatra
 
 [Region]
 Malopolskie
 [Hospital]
-Wojewodzki Szpital Specjalistyczny im. L. Rydygiera w Krakowie
+Wojewódzki Szpital Specjalistyczny im. L. Rydygiera w Krakowie
 [Doctors]
-Lukasz Urban - Ortopeda
-Barbara Nowicka - Kardiolog
-Marcin Lis - Psychiatria
-Monika Brzezinska - Lekarz ogolny
+Maciej Wrona - Lekarz ogolny
+Barbara Nowicka - Pediatra
+Marcin Lis - Ortopeda
+Monika Brzezińska - Dermatolog
+[Hospital]
+Szpital Uniwersytecki w Krakowie
+[Doctors]
+Tomasz Baran - Kardiolog
+Emilia Maj - Pulmonolog
+Wojciech Witkowski - Gastrolog
+Natalia Rutkowska - Internista
+[Hospital]
+Szpital Specjalistyczny im. Stefana Żeromskiego w Krakowie
+[Doctors]
+Michał Kruczek - Lekarz ogolny
+Julia Bartek - Reumatolog
+Sebastian Góra - Neurolog
+Olga Drzewiecka - Pediatra
 
 [Region]
 Mazowieckie
 [Hospital]
-Mazowiecki Szpital Brodnowski w Warszawie
+Mazowiecki Szpital Bródnowski w Warszawie
 [Doctors]
-Tomasz Baran - Neurolog
-Emilia Maj - Dermatolog
-Wojciech Witkowski - Endokrynolog
-Natalia Rutkowska - Lekarz ogolny
+Tomasz Baran - Lekarz ogolny
+Emilia Maj - Pediatra
+Wojciech Witkowski - Kardiolog
+Natalia Rutkowska - Dermatolog
+[Hospital]
+Szpital Bielański im. ks. Jerzego Popiełuszki w Warszawie
+[Doctors]
+Michał Kruczek - Lekarz ogolny
+Julia Bartek - Reumatolog
+Sebastian Góra - Pulmonolog
+Olga Drzewiecka - Internista
+[Hospital]
+Szpital Kliniczny Dzieciątka Jezus w Warszawie
+[Doctors]
+Maciej Wrona - Lekarz ogolny
+Barbara Nowicka - Pediatra
+Marcin Lis - Ortopeda
+Monika Brzezińska - Dermatolog
 
 [Region]
 Opolskie
 [Hospital]
 Uniwersytecki Szpital Kliniczny w Opolu
 [Doctors]
-Andrzej Kalinowski - Gastrolog
-Magdalena Czajka - Okulista
-Bartlomiej Piatek - Internista
-Weronika Michalska - Lekarz ogolny
+Andrzej Kalinowski - Lekarz ogolny
+Magdalena Czajka - Pediatra
+Bartłomiej Piątek - Ortopeda
+Weronika Michalska - Dermatolog
+[Hospital]
+Szpital Wojewódzki w Opolu
+[Doctors]
+Piotr Olejnik - Kardiolog
+Agata Bielska - Pulmonolog
+Damian Król - Gastrolog
+Ewelina Stolarz - Internista
+[Hospital]
+Szpital Specjalistyczny im. św. Barbary w Sosnowcu
+[Doctors]
+Michał Kruczek - Lekarz ogolny
+Julia Bartek - Reumatolog
+Sebastian Góra - Neurolog
+Olga Drzewiecka - Pediatra
 
 [Region]
 Podkarpackie
 [Hospital]
-Wojewodzki Szpital Kliniczny nr 2 w Rzeszowie
+Wojewódzki Szpital Kliniczny nr 2 w Rzeszowie
 [Doctors]
-Piotr Olejnik - Reumatolog
-Agata Bielska - Alergolog
-Damian Krol - Ortopeda
-Ewelina Stolarz - Lekarz ogolny
+Piotr Olejnik - Lekarz ogolny
+Agata Bielska - Pediatra
+Damian Król - Ortopeda
+Ewelina Stolarz - Dermatolog
+[Hospital]
+Szpital Specjalistyczny im. Fryderyka Chopina w Rzeszowie
+[Doctors]
+Andrzej Kalinowski - Kardiolog
+Magdalena Czajka - Pulmonolog
+Bartłomiej Piątek - Gastrolog
+Weronika Michalska - Internista
+[Hospital]
+Szpital Miejski w Przemyślu
+[Doctors]
+Michał Kruczek - Lekarz ogolny
+Julia Bartek - Reumatolog
+Sebastian Góra - Neurolog
+Olga Drzewiecka - Pediatra
 
 [Region]
 Podlaskie
 [Hospital]
-Uniwersytecki Szpital Kliniczny w Bialymstoku
+Uniwersytecki Szpital Kliniczny w Białymstoku
 [Doctors]
-Michal Kruczek - Kardiolog
-Julia Bartek - Chirurg
-Sebastian Gora - Pulmonolog
-Olga Drzewiecka - Lekarz ogolny
+Janusz Kowalski - Lekarz ogolny
+Aleksandra Nowicka - Pediatra
+Rafał Mazur - Ortopeda
+Alicja Domańska - Dermatolog
+[Hospital]
+Szpital Wojewódzki w Białymstoku
+[Doctors]
+Łukasz Urban - Kardiolog
+Barbara Nowicka - Pulmonolog
+Marcin Lis - Gastrolog
+Monika Brzezińska - Internista
+[Hospital]
+Szpital Wojewódzki im. dr. Ludwika Rydygiera w Suwałkach
+[Doctors]
+Tomasz Baran - Lekarz ogolny
+Emilia Maj - Reumatolog
+Wojciech Witkowski - Neurolog
+Natalia Rutkowska - Pediatra
 
 [Region]
 Pomorskie
 [Hospital]
-Pomorskie Centrum Traumatologii w Gdansku
+Pomorskie Centrum Traumatologii im. M. Kopernika w Gdańsku
 [Doctors]
-Kamil Raczynski - Dermatolog
-Elzbieta Sowa - Neurolog
-Roman Brys - Internista
-Marta Nowak - Lekarz ogolny
+Kamil Raczyński - Lekarz ogolny
+Elżbieta Sowa - Pediatra
+Roman Bryś - Ortopeda
+Marta Nowak - Dermatolog
+[Hospital]
+Szpital Specjalistyczny im. Floriana Ceynowy w Wejherowie
+[Doctors]
+Michał Kaczmarek - Kardiolog
+Zofia Gajda - Pulmonolog
+Rafał Mazur - Gastrolog
+Alicja Domańska - Internista
+[Hospital]
+Uniwersyteckie Centrum Kliniczne w Gdańsku
+[Doctors]
+Tomasz Baran - Lekarz ogolny
+Emilia Maj - Reumatolog
+Wojciech Witkowski - Neurolog
+Natalia Rutkowska - Pediatra
 
 [Region]
 Slaskie
 [Hospital]
-Gornoslaskie Centrum Medyczne w Katowicach
+Górnośląskie Centrum Medyczne w Katowicach
 [Doctors]
-Adrian Czarnecki - Ortopeda
-Kinga Malec - Diabetolog
-Daniel Jasinski - Kardiolog
-Renata Walczak - Lekarz ogolny
+Adrian Czarnecki - Lekarz ogolny
+Kinga Malec - Pediatra
+Daniel Jasiński - Ortopeda
+Renata Walczak - Dermatolog
+[Hospital]
+Szpital Miejski nr 4 w Gliwicach
+[Doctors]
+Marek Kowalski - Kardiolog
+Ewa Sikora - Pulmonolog
+Tomasz Wojcik - Gastrolog
+Katarzyna Krawczyk - Internista
+[Hospital]
+Szpital Specjalistyczny w Dąbrowie Górniczej
+[Doctors]
+Tomasz Baran - Lekarz ogolny
+Emilia Maj - Reumatolog
+Wojciech Witkowski - Neurolog
+Natalia Rutkowska - Pediatra
 
 [Region]
 Swietokrzyskie
 [Hospital]
-Wojewodzki Szpital Zespolony w Kielcach
+Wojewódzki Szpital Zespolony w Kielcach
 [Doctors]
-Patryk Goral - Urolog
-Klaudia Wilk - Endokrynolog
-Artur Maj - Gastrolog
-Sylwia Pawlak - Lekarz ogolny
+Patryk Góral - Lekarz ogolny
+Klaudia Wilk - Pediatra
+Artur Maj - Ortopeda
+Sylwia Pawlak - Dermatolog
+[Hospital]
+Szpital Specjalistyczny im. św. Łukasza w Końskich
+[Doctors]
+Michał Kaczmarek - Kardiolog
+Zofia Gajda - Pulmonolog
+Rafał Mazur - Gastrolog
+Alicja Domańska - Internista
+[Hospital]
+Szpital Powiatowy w Busku-Zdroju
+[Doctors]
+Tomasz Baran - Lekarz ogolny
+Emilia Maj - Reumatolog
+Wojciech Witkowski - Neurolog
+Natalia Rutkowska - Pediatra
 
 [Region]
 Warminsko-mazurskie
 [Hospital]
-Wojewodzki Szpital Specjalistyczny w Olsztynie
+Wojewódzki Szpital Specjalistyczny w Olsztynie
 [Doctors]
-Natalia Krawczyk - Dermatolog
-Dariusz Zieba - Pulmonolog
-Anna Musial - Onkolog
-Tomasz Jaworski - Lekarz ogolny
+Natalia Krawczyk - Lekarz ogolny
+Dariusz Zięba - Pediatra
+Anna Musiał - Ortopeda
+Tomasz Jaworski - Dermatolog
+[Hospital]
+Szpital Miejski w Elblągu
+[Doctors]
+Maciej Wrona - Kardiolog
+Barbara Nowicka - Pulmonolog
+Marcin Lis - Gastrolog
+Monika Brzezińska - Internista
+[Hospital]
+Szpital Powiatowy w Ostródzie
+[Doctors]
+Tomasz Baran - Lekarz ogolny
+Emilia Maj - Reumatolog
+Wojciech Witkowski - Neurolog
+Natalia Rutkowska - Pediatra
 
 [Region]
 Wielkopolskie
 [Hospital]
 Szpital Miejski im. J. Strusia w Poznaniu
 [Doctors]
-Beata Adamska - Internista
-Pawel Koziol - Neurolog
-Lidia Roman - Reumatolog
-Michal Turek - Lekarz ogolny
+Beata Adamska - Lekarz ogolny
+Paweł Kozioł - Pediatra
+Lidia Roman - Ortopeda
+Michał Turek - Dermatolog
+[Hospital]
+Szpital Wojewódzki w Koninie
+[Doctors]
+Łukasz Urban - Kardiolog
+Barbara Nowicka - Pulmonolog
+Marcin Lis - Gastrolog
+Monika Brzezińska - Internista
+[Hospital]
+Szpital Powiatowy w Gnieźnie
+[Doctors]
+Tomasz Baran - Lekarz ogolny
+Emilia Maj - Reumatolog
+Wojciech Witkowski - Neurolog
+Natalia Rutkowska - Pediatra
 
 [Region]
 Zachodniopomorskie
 [Hospital]
 Szpital Kliniczny Nr 2 w Szczecinie
 [Doctors]
-Krystyna Sikora - Kardiolog
-Mateusz Zak - Okulista
-Eliza Grochowska - Diabetolog
-Izabela Kot - Lekarz ogolny
+Krystyna Sikora - Lekarz ogolny
+Mateusz Żak - Pediatra
+Eliza Grochowska - Ortopeda
+Izabela Kot - Dermatolog
+[Hospital]
+Szpital Wojewódzki w Koszalinie
+[Doctors]
+Maciej Wrona - Kardiolog
+Barbara Nowicka - Pulmonolog
+Marcin Lis - Gastrolog
+Monika Brzezińska - Internista
+[Hospital]
+Samodzielny Publiczny Szpital Kliniczny Nr 1 PUM w Szczecinie
+[Doctors]
+Tomasz Baran - Lekarz ogolny
+Emilia Maj - Reumatolog
+Wojciech Witkowski - Neurolog
+Natalia Rutkowska - Pediatra
