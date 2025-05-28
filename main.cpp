@@ -231,21 +231,16 @@ void displayMenu() {
     std::cout <<
         "\n--- Menu zarządzania szpitalem ---\n"
         "1. Wczytaj lekarzy, pacjentów lub objawy\n"
-        "2. Dodaj szpital\n"
-        "3. Dodaj lekarza\n"
-        "4. Dodaj pacjenta do listy\n"
-        "5. Dodaj objaw\n"
-        "6. Wyświetl szpitale i przypisanych lekarzy (posortowane)\n"
-        "7. Wyświetl pacjentów\n"
-        "8. Wyświetl objawy\n"
-        "9. Przypisz pacjentów do lekarzy\n"
-        "10. Wyświetl pacjentów przypisanych do lekarzy (posortowane)\n"
-        "11. Utwórz kolejki\n"
-        "12. Wyświetl kolejki wszystkich lekarzy (posortowane)\n"
-        "13. Wyświetl kolejkę lekarza\n"
-        "14. Eksportuj kolejki do pliku TXT\n"
-        "15. Wykonaj obliczenie naukowe\n"
-        "16. Zakończ program\n"
+        "2. Dodaj element (szpital, lekarz, pacjent, objaw)\n"
+        "3. Wyświetl dane (szpitale/lekarze, pacjenci, objawy)\n"
+        "4. Przypisz pacjentów do lekarzy\n"
+        "5. Wyświetl pacjentów przypisanych do lekarzy (posortowane)\n"
+        "6. Utwórz kolejki\n"
+        "7. Wyświetl kolejki wszystkich lekarzy (posortowane)\n"
+        "8. Wyświetl kolejkę lekarza\n"
+        "9. Eksportuj kolejki do pliku TXT\n"
+        "10. Wykonaj obliczenie naukowe\n"
+        "11. Zakończ program\n"
         "Wybierz opcję: ";
 }
 
@@ -338,82 +333,112 @@ int main() {
                 break;
             }
             case 2: {
-                int widx = selectWojewodztwo();
-                if (widx == -1) break;
-                std::string name;
-                std::cout << "Nazwa szpitala: ";
-                std::getline(std::cin, name);
-                hospitals.push_back(new Hospital(name, wojewodztwa[widx]));
+                int addChoice;
+                std::cout << "Co chcesz dodać?\n";
+                std::cout << "1. Szpital\n2. Lekarza\n3. Pacjenta\n4. Objaw\n";
+                std::cout << "Wybierz opcję: ";
+                std::cin >> addChoice;
+                std::cin.ignore();
+
+                switch (addChoice) {
+                    case 1: { // Szpital
+                        int widx = selectWojewodztwo();
+                        if (widx == -1) break;
+                        std::string name;
+                        std::cout << "Nazwa szpitala: ";
+                        std::getline(std::cin, name);
+                        hospitals.push_back(new Hospital(name, wojewodztwa[widx]));
+                        break;
+                    }
+                    case 2: { // Lekarz
+                        int widx = selectWojewodztwo();
+                        if (widx == -1) break;
+                        int hidx = selectHospital(hospitals, wojewodztwa[widx]);
+                        if (hidx == -1) break;
+                        Hospital* hospital = hospitals[hidx];
+                        std::string firstName, lastName, specialization;
+                        std::cout << "Imię lekarza: "; std::cin >> firstName;
+                        std::cout << "Nazwisko lekarza: "; std::cin >> lastName;
+                        std::cout << "Specjalizacja: "; std::cin >> specialization;
+                        hospital->addDoctor(new Doctor(firstName, lastName, specialization));
+                        std::cin.ignore();
+                        break;
+                    }
+                    case 3: { // Pacjent
+                        int widx = selectWojewodztwo();
+                        if (widx == -1) break;
+                        std::string firstName, lastName, region = wojewodztwa[widx], problem;
+                        int age;
+                        std::cout << "Imię pacjenta: "; std::cin >> firstName;
+                        std::cout << "Nazwisko pacjenta: "; std::cin >> lastName;
+                        std::cout << "Wiek: "; std::cin >> age;
+                        std::cout << "Problem: "; std::cin.ignore(); std::getline(std::cin, problem);
+
+                        if (age < 18) {
+                            patients.push_back(new Child(firstName, lastName, age, region, problem));
+                        } else {
+                            patients.push_back(new Adult(firstName, lastName, age, region, problem));
+                        }
+                        break;
+                    }
+                    case 4: { // Objaw
+                        std::string specialist, symptom;
+                        std::cout << "Specjalista: "; std::cin >> specialist;
+                        std::cout << "Objaw: "; std::cin >> symptom;
+                        symptomsMap[specialist].push_back(symptom);
+                        break;
+                    }
+                    default:
+                        std::cout << "Nieprawidłowa opcja!\n";
+                }
                 break;
             }
             case 3: {
-                int widx = selectWojewodztwo();
-                if (widx == -1) break;
-                int hidx = selectHospital(hospitals, wojewodztwa[widx]);
-                if (hidx == -1) break;
-                Hospital* hospital = hospitals[hidx];
-                std::string firstName, lastName, specialization;
-                std::cout << "Imię lekarza: "; std::cin >> firstName;
-                std::cout << "Nazwisko lekarza: "; std::cin >> lastName;
-                std::cout << "Specjalizacja: "; std::cin >> specialization;
-                hospital->addDoctor(new Doctor(firstName, lastName, specialization));
+                int viewChoice;
+                std::cout << "Co chcesz wyświetlić?\n";
+                std::cout << "1. Szpitale i przypisanych lekarzy (posortowane)\n";
+                std::cout << "2. Pacjentów\n";
+                std::cout << "3. Objawy\n";
+                std::cout << "Wybierz opcję: ";
+                std::cin >> viewChoice;
                 std::cin.ignore();
+
+                switch (viewChoice) {
+                    case 1: {
+                        std::vector<Hospital*> sortedHospitals = hospitals;
+                        std::sort(sortedHospitals.begin(), sortedHospitals.end(), [](const Hospital* a, const Hospital* b) {
+                            if (a->getRegion() == b->getRegion())
+                                return a->getName() < b->getName();
+                            return a->getRegion() < b->getRegion();
+                        });
+
+                        for(const auto* h : sortedHospitals) {
+                            h->printDoctors();
+                        }
+                        break;
+                    }
+                    case 2: {
+                        for(const auto* p : patients) p->printDetails();
+                        break;
+                    }
+                    case 3: {
+                        for(const auto& [spec, symptoms] : symptomsMap) {
+                            std::cout << spec << ": ";
+                            for(const auto& s : symptoms) std::cout << s << ", ";
+                            std::cout << "\n";
+                        }
+                        break;
+                    }
+                    default:
+                        std::cout << "Nieprawidłowa opcja!\n";
+                }
                 break;
             }
             case 4: {
-                int widx = selectWojewodztwo();
-                if (widx == -1) break;
-                std::string firstName, lastName, region = wojewodztwa[widx], problem;
-                int age;
-                std::cout << "Imię pacjenta: "; std::cin >> firstName;
-                std::cout << "Nazwisko pacjenta: "; std::cin >> lastName;
-                std::cout << "Wiek: "; std::cin >> age;
-                std::cout << "Problem: "; std::cin.ignore(); std::getline(std::cin, problem);
-
-                if (age < 18) {
-                    patients.push_back(new Child(firstName, lastName, age, region, problem));
-                } else {
-                    patients.push_back(new Adult(firstName, lastName, age, region, problem));
-                }
-                break;
-            }
-            case 5: {
-                std::string specialist, symptom;
-                std::cout << "Specjalista: "; std::cin >> specialist;
-                std::cout << "Objaw: "; std::cin >> symptom;
-                symptomsMap[specialist].push_back(symptom);
-                break;
-            }
-            case 6: {
-                std::vector<Hospital*> sortedHospitals = hospitals;
-                std::sort(sortedHospitals.begin(), sortedHospitals.end(), [](const Hospital* a, const Hospital* b) {
-                    if (a->getRegion() == b->getRegion())
-                        return a->getName() < b->getName();
-                    return a->getRegion() < b->getRegion();
-                });
-
-                for(const auto* h : sortedHospitals) {
-                    h->printDoctors();
-                }
-                break;
-            }
-            case 7: {
-                for(const auto* p : patients) p->printDetails();
-                break;
-            }
-            case 8: {
-                for(const auto& [spec, symptoms] : symptomsMap) {
-                    std::cout << spec << ": ";
-                    for(const auto& s : symptoms) std::cout << s << ", ";
-                    std::cout << "\n";
-                }
-                break;
-            }
-            case 9: {
                 assignPatientsBySymptomAndLoad(hospitals, patients, symptomsMap);
                 break;
             }
-            case 10: {
+            case 5: {
                 std::vector<Hospital*> sortedHospitals = hospitals;
                 std::sort(sortedHospitals.begin(), sortedHospitals.end(), [](const Hospital* a, const Hospital* b) {
                     if (a->getRegion() == b->getRegion())
@@ -427,11 +452,11 @@ int main() {
                 }
                 break;
             }
-            case 11: {
+            case 6: {
                 assignVisitDates(hospitals);
                 break;
             }
-            case 12: {
+            case 7: {
                 std::vector<Hospital*> sortedHospitals = hospitals;
                 std::sort(sortedHospitals.begin(), sortedHospitals.end(), [](const Hospital* a, const Hospital* b) {
                     if (a->getRegion() == b->getRegion())
@@ -454,7 +479,7 @@ int main() {
                 }
                 break;
             }
-            case 13: {
+            case 8: {
                 int widx = selectWojewodztwo();
                 if (widx == -1) break;
                 int hidx = selectHospital(hospitals, wojewodztwa[widx]);
@@ -465,11 +490,11 @@ int main() {
                 hospital->getDoctors()[didx]->printQueue();
                 break;
             }
-            case 14: {
+            case 9: {
                 exportQueuesToTxt(hospitals);
                 break;
             }
-            case 15: {
+            case 10: {
                 size_t n;
                 int percent;
                 std::cout << "Ile losowych wartości danych wygenerować? ";
@@ -482,14 +507,14 @@ int main() {
                 std::cout << "Obliczenia trwały: " << t << " sekund\n";
                 break;
             }
-            case 16: {
+            case 11: {
                 std::cout << "Program zakończony!\n";
                 break;
             }
             default:
                 std::cout << "Nieprawidłowa opcja!\n";
         }
-    } while(choice != 16);
+    } while(choice != 11);
 
     for(auto* h : hospitals) delete h;
     for(auto* p : patients) delete p;
