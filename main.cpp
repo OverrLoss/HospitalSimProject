@@ -14,6 +14,8 @@
 #include <ctime>
 #include <iomanip>
 #include <fstream>
+#include <numeric>
+#include <map>
 
 // --- Lista polskich województw ---
 const std::vector<std::string> wojewodztwa = {
@@ -227,6 +229,105 @@ void exportQueuesToTxt(const std::vector<Hospital*>& hospitals) {
     std::cout << "Wyeksportowano do pliku: " << filename << "\n";
 }
 
+// ---- STATYSTYKI ----
+void generateAndShowOrExportStats(const std::vector<Hospital*>& hospitals, bool exportToFile = false) {
+    std::ostringstream out;
+
+    int totalPatients = 0, totalChildren = 0, totalAdults = 0;
+    double totalAge = 0;
+    int totalDoctors = 0;
+    std::map<std::string, int> regionPatients;
+    std::map<std::string, int> regionChildren;
+    std::map<std::string, int> regionAdults;
+    std::map<std::string, double> regionAge;
+    std::map<std::string, int> regionDoctors;
+
+    out << "--- Statystyki szpitali i pacjentów (obliczenia równoległe) ---\n";
+
+    #pragma omp parallel for reduction(+:totalPatients, totalChildren, totalAdults, totalAge, totalDoctors)
+    for (int i = 0; i < hospitals.size(); ++i) {
+        auto *h = hospitals[i];
+        int szpitalPatients = 0, szpitalChildren = 0, szpitalAdults = 0, szpitalDoctors = 0;
+        double szpitalAge = 0.0;
+
+        for (const auto* d : h->getDoctors()) {
+            ++szpitalDoctors;
+            const auto& pList = d->getPatients();
+            szpitalPatients += pList.size();
+            for (const auto* p : pList) {
+                szpitalAge += p->getAge();
+                if (p->getAge() < 18) szpitalChildren++;
+                else szpitalAdults++;
+            }
+        }
+
+        // Zbiorcze statystyki globalne
+        totalPatients += szpitalPatients;
+        totalChildren += szpitalChildren;
+        totalAdults += szpitalAdults;
+        totalAge += szpitalAge;
+        totalDoctors += szpitalDoctors;
+
+        // Per region
+        #pragma omp critical
+        {
+            regionPatients[h->getRegion()] += szpitalPatients;
+            regionChildren[h->getRegion()] += szpitalChildren;
+            regionAdults[h->getRegion()] += szpitalAdults;
+            regionAge[h->getRegion()] += szpitalAge;
+            regionDoctors[h->getRegion()] += szpitalDoctors;
+
+            // Wypisz statystyki dla szpitala
+            out << "Szpital: " << h->getName() << " (" << h->getRegion() << ")\n";
+            out << "  Lekarzy: " << szpitalDoctors << "\n";
+            out << "  Pacjentów: " << szpitalPatients << "\n";
+            out << "  Dzieci: " << szpitalChildren << ", Dorośli: " << szpitalAdults << "\n";
+            if (szpitalPatients > 0)
+                out << "  Śr. wiek pacjenta: " << szpitalAge / szpitalPatients << "\n";
+        }
+    }
+
+    out << "\n--- Statystyki globalne ---\n";
+    out << "Łącznie szpitali: " << hospitals.size() << "\n";
+    out << "Łącznie lekarzy: " << totalDoctors << "\n";
+    out << "Łącznie pacjentów: " << totalPatients << "\n";
+    out << "Łącznie dzieci: " << totalChildren << ", dorośli: " << totalAdults << "\n";
+    if (totalPatients > 0)
+        out << "Średni wiek pacjenta (wszyscy): " << totalAge / totalPatients << "\n";
+    if (totalDoctors > 0)
+        out << "Średnio pacjentów na lekarza: " << (double)totalPatients / totalDoctors << "\n";
+    if (hospitals.size() > 0)
+        out << "Średnio pacjentów na szpital: " << (double)totalPatients / hospitals.size() << "\n";
+
+    out << "\n--- Statystyki wg województw ---\n";
+    for (const auto& [region, count] : regionPatients) {
+        out << region << ":\n";
+        out << "  Lekarzy: " << regionDoctors[region] << "\n";
+        out << "  Pacjentów: " << count << "\n";
+        out << "  Dzieci: " << regionChildren[region] << ", Dorośli: " << regionAdults[region] << "\n";
+        if (count > 0)
+            out << "  Śr. wiek pacjenta: " << regionAge[region] / count << "\n";
+    }
+
+    if (exportToFile) {
+        std::string filename;
+        std::cout << "Podaj nazwę pliku do eksportu (domyślnie: statystyki.txt): ";
+        std::getline(std::cin, filename);
+        if (filename.empty()) filename = "statystyki.txt";
+        std::ofstream ofs(filename);
+        if (!ofs) {
+            std::cout << "Nie można otworzyć pliku!\n";
+            return;
+        }
+        ofs << out.str();
+        ofs.close();
+        std::cout << "Statystyki wyeksportowano do pliku: " << filename << "\n";
+    } else {
+        std::cout << out.str();
+    }
+}
+
+// ---- MENU ----
 void displayMenu() {
     std::cout <<
         "\n--- Menu zarządzania szpitalem ---\n"
@@ -239,7 +340,7 @@ void displayMenu() {
         "7. Wyświetl kolejki wszystkich lekarzy (posortowane)\n"
         "8. Wyświetl kolejkę lekarza\n"
         "9. Eksportuj kolejki do pliku TXT\n"
-        "10. Wykonaj obliczenie naukowe\n"
+        "10. Statystyki (równoległe obliczenia/statystyki)\n"
         "11. Zakończ program\n"
         "Wybierz opcję: ";
 }
@@ -495,16 +596,13 @@ int main() {
                 break;
             }
             case 10: {
-                size_t n;
-                int percent;
-                std::cout << "Ile losowych wartości danych wygenerować? ";
-                std::cin >> n;
-                std::cout << "Jaki procent CPU użyć (1-100)? ";
-                std::cin >> percent;
-                init_data(n);
-                set_cpu_usage_percent(percent);
-                double t = run_computation();
-                std::cout << "Obliczenia trwały: " << t << " sekund\n";
+                int statOpt = 0;
+                std::cout << "1. Wyświetl statystyki na ekranie\n";
+                std::cout << "2. Eksportuj statystyki do pliku TXT\n";
+                std::cout << "Wybierz opcję: ";
+                std::cin >> statOpt;
+                std::cin.ignore();
+                generateAndShowOrExportStats(hospitals, statOpt == 2);
                 break;
             }
             case 11: {

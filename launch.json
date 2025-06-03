@@ -1,17 +1,31 @@
 {
+    "version": "2.0.0",
     "configurations": [
         {
-            "name": "C/C++: cl.exe build and debug active file",
+            "name": "Debug (cl.exe/MSVC, hospital_sim)",
             "type": "cppvsdbg",
             "request": "launch",
-            "program": "${fileDirname}\\${fileBasenameNoExtension}.exe",
+            "program": "${workspaceFolder}/build/hospital_sim.exe",
             "args": [],
             "stopAtEntry": false,
-            "cwd": "${fileDirname}",
+            "cwd": "${workspaceFolder}/build",
             "environment": [],
             "console": "integratedTerminal",
-            "preLaunchTask": "C/C++: cl.exe build active file"
+            "preLaunchTask": "build all (CL)"
+        },
+        {
+            "name": "Debug (g++, hospital_sim)",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceFolder}/build/hospital_sim.exe",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}/build",
+            "environment": [],
+            "console": "integratedTerminal",
+            "MIMode": "gdb",
+            "miDebuggerPath": "gdb",
+            "preLaunchTask": "build all (G++)"
         }
-    ],
-    "version": "2.0.0"
+    ]
 }
